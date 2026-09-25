@@ -1,0 +1,4 @@
+c ElimLin fixture — from upstream tests/anf-files/el.anf.
+c Simplified by --el 1 the system reduces to fixed x(2)=1 and equivalence x(3)+x(1)+1.
+x1 + x2 + x3
+x1*x2 + x2*x3 + 1

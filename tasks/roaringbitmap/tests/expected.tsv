@@ -1,0 +1,200 @@
+empty	card=0|longCard=0|isEmpty=true|contains0=false|toString={}
+bitmapOf_basic	card=4|contains1000=true|contains7=false|toArray=[1, 2, 3, 1000]|toString={1,2,3,1000}
+bitmapOf_dedup	card=3|toArray=[1, 5, 9]
+bitmapOf_unordered	card=4|toArray=[1, 2, 3, 1000]
+add_scalar_and_varargs	card=4|toArray=[1, 2, 3, 5]
+addN_slice	toString={2,3,4}|negN=IllegalArgumentException|tooBig=IllegalArgumentException
+add_range	rangeCard=100000|first=100000|last=199999|emptyRangeCard=0
+add_range_boundary	card=10|contains65535=true|contains65536=true|contains65540=false|toArray=[65530, 65531, 65532, 65533, 65534, 65535, 65536, 65537, 65538, 65539]
+remove_scalar_and_range	card=6|toArray=[1, 6, 7, 8, 9, 10]
+contains_range	allIn=true|partialOut=false|supLEmin=false
+checked_add_remove	a1=true|a2=false|r1=true|r2=false|card=0
+clear	card=0|isEmpty=true
+cardinality_exceeds	exceeds2=true|exceeds3=false|exceeds4=false
+unsigned_wraparound	card=4|toArray=[1, 2147483647, -2147483648, -1]|toString={1,2147483647,2147483648,4294967295}
+bitmap_of_range	card=255|first=4000|last=4254|emptyCard=0
+range_sanity_errors	negStart=IllegalArgumentException|endTooBig=IllegalArgumentException|okFull=none
+static_ops	and=[2, 3]|or=[1, 2, 3, 4]|xor=[1, 4]|andNot=[1]|aUnchanged=[1, 2, 3]|bUnchanged=[2, 3, 4]
+inplace_and	[2, 4]
+inplace_or	[1, 2, 3, 4, 5]
+inplace_xor	[1, 4]
+inplace_andnot	[1, 3]
+self_ops	xorSelf=0|andNotSelf=0|andSelf=[1, 2, 3]|orSelf=[1, 2, 3]
+cardinality_forms	and=2|or=4|xor=2|andNot=1
+disjoint_ops	andCard=0|orCard=6|intersects=false
+intersects	ab=true|ac=false|rangeIn=true|rangeOut=false|supLEmin=false
+multi_or	card=4|toArray=[1, 2, 3, 4]
+or_iterator	[1, 2, 3, 4]
+unsigned_ops	or=[5, 2147483647, -2147483648, -1]|and=[-2147483648]|andNot=[2147483647, -1]
+or_not	inplace=[0, 1, 4]|selfErr=none|sc=2
+static_or_not	toArray=[0, 1, 4]|x1Unchanged=[0]
+rank_basic	r0=0|r1=1|r2=2|r999=3|r1000=4|rankLong1000=4
+select_basic	s0=1|s3=1000|outOfRange=IllegalArgumentException
+rank_select_unsigned	sel0=1|sel1=2147483647|sel2=-234|rankMax=2|rankNeg234=3
+first_last	first=5|last=-2147483648|firstSigned=-2147483648|lastSigned=100|emptyFirst=NoSuchElementException|emptyLast=NoSuchElementException
+next_value	n2=4|n4=4|n5=-1|n0=0
+previous_value	p3=1|p0=0|pWrap=4|emptyPrev=-1
+next_absent_value	na0=3|emptyAbsent=5
+previous_absent_value	pa2=0|pa5=5
+range_cardinality	rc_0_1000=1000|rc_100_200=100|rc_empty=0|rc_startGEend=0
+select_range	sub=[5, 10, 15]|emptyCard=0
+limit	limit2=[1, 2]|limit0=0|limit100=4
+next_absent_top_of_range	presentMax=-1|fullTop=-1
+previous_value_empty_middle	prevMidGap=5|prevBelow=-1
+absent_across_full_chunk	nextAbsent0=65536|nextVal0=0|prevAbsentInFull=-1
+range_ops_sign_boundary	rangeCard=3|selCard=2|selFirst=-2147483648
+rank_select_multicontainer	card=3|sel0=5|sel1=65543|sel2=131075|rankMid=2|rankLast=3
+navigation_boundary	next65535=65535|next65534=65535|prev65536=65536|nextAbsent65535=65537
+dense_rank_select	card=100000|sel0=0|sel99999=99999|rank50000=50001|rangeCard=1000
+flip_scalar	afterRemoveAdd=[6]|card=1
+flip_range_roundtrip	after=[0, 1, 2]|backCard=0
+flip_range_partial	[1, 4, 5]
+flip_static	out=[0, 3]|inUnchanged=[0, 1, 2]
+flip_static_empty_range	out=[7, 8]|equalsIn=true
+flip_range_boundary	toArray=[65534, 65536, 65537]|card=3
+to_array	[1, 2, 3, 1000]
+boxed_iterator	seq=1,2,3,|removeErr=UnsupportedOperationException
+int_iterator_unsigned	5,2147483647,-2147483648,-1,
+reverse_iterator	1000,3,2,1,
+signed_iterator	-2147483648,-1,1,5,
+peekable_advance	peek1=4|next1=4|peek2=9
+batch_iterator	total=5000|firstVal=0
+batch_iterator_empty	hasNext=false|nextBatch=0
+for_each	10,20,30,
+for_each_in_range	5,8,12,
+iterator_empty	intHasNext=false|revHasNext=false|boxedHasNext=false
+iterator_clone	origNext=2|cloneNext=2
+mixed_window	AAPPP
+all_present	PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+all_absent	AAAAAAAAAAAAAAAAAAAA
+window_boundary	PAPAA
+read_to_end	PP
+errors	negLen=IllegalArgumentException|pastEnd=IllegalArgumentException
+run_optimize_preserves_set	optimized=true|hasRun=true|cardSame=true|contains50=true|contains100=false
+remove_run_compression	removed=true|hasRunAfter=false|card=100
+run_optimize_sparse	optimized=false|hasRun=false
+clone_independent	equalBeforeMutateReflected=true|cloneHas9999=true|origHas9999=false
+equals_value_based	ab=true|ac=false
+equals_across_runstate	equal=true|cardSame=true
+contains_subset	sub23=true|sub25=false|emptySub=true
+hamming_similar	tol1=true|tol0=false
+trim_preserves_set	cardSame=true|contains100000=true
+dataoutput_roundtrip	equals=true|cardOut=6|validate=true
+serialized_size_matches	match=true
+bytebuffer_roundtrip	equals=true|advanced=true
+bytebuffer_dataoutput_identical	identical=true
+roundtrip_runoptimized	equals=true|cardOut=1000
+roundtrip_empty	equals=true|isEmpty=true
+roundtrip_unsigned	equals=true|toArray=[0, 2147483647, -2147483648, -1]
+validate_true	validate=true
+maximum_serialized_size_bound	bound=true
+bad_cookie	err=IOException
+deserialize_overwrites	toArray=[7, 8, 9]
+fast_or	toArray=[1, 2, 3, 4]|card=4
+fast_and	[3]
+fast_xor	[1, 3]
+fast_naive_or	equal=true|toArray=[1, 2, 5, 9]
+fast_cardinalities	andCard=2|orCard=6
+fast_intersects	ab=true|ac=false
+fast_or_many	card=36|first=0|last=100011
+parallel_or	equal=true|card=7
+parallel_xor	equal=true|toArray=[1, 4]
+writer_basic	[1, 2, 3]
+writer_add_many	card=4|toArray=[10, 20, 30, 40]
+writer_range	[100, 101, 102, 103, 104]
+writer_constant_memory_unordered	toArray=[1, 2, 3, 1000]
+writer_multicontainer	card=3|first=5|last=131081
+writer_capacity_errors	tooBig=IllegalArgumentException|negative=IllegalArgumentException
+bitset_set_and_query	card=5|get1=true|get2=false|get7=false|length=7|size=64|isEmpty=false
+bitset_next_bits	nextSet0=3|nextSet4=4|nextSetPastEnd=-1|nextClear0=0|nextClear3=7
+bitset_empty	isEmpty=true|length=0|card=0|nextSet0=-1|nextClear0=0|toString={}
+bitset_clear_range	isEmpty=true|length=0
+bitset_subview	sub0=true|sub3=true|subCard=2
+bitset_boolean_ops	andCard=62|andFirst=2|andLast=63|xorResult={2}
+bitset_flip	afterOne=true|afterTwoEmpty=true
+bitsetutil_from_bitset	card=2|toArray=[1, 1000]
+bitsetutil_from_longs	toArray=[1, 3]
+bitsetutil_to_longs	roundTrips=true|word0=10|emptyLen=0
+bitsetutil_bitset_of	bs2=true|bs5=true|bs3=false|equals=true
+bitsetutil_negative_error	err=IllegalArgumentException
+canonical	lt5=[0, 1]|gte1=[0, 1, 2]|gt1=[2]|eq1=[0, 1]|neq1=[2]|lte1=[0, 1]
+lt_lte	lt0=[]|lt25=[0, 1]|lte30=[0, 1, 2]|lt10=[]
+gt_gte	gt20=[2, 3]|gte20=[1, 2, 3]|gte0=[0, 1, 2, 3]|gt40=[]
+eq_neq	eq5=[0, 1, 3]|eq7=[2]|eq6=[]|neq5=[2]
+between	b0_10=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]|b2_8=[2, 3, 4, 5, 6, 7, 8]|b3_7=[3, 4, 5, 6, 7]|b5_5=[5]
+complements	gteLt=[0, 1, 2, 3, 4]|lteGt=[0, 1, 2, 3, 4]
+cardinality_variants	ltCard30=2|gteCard30=3|eqCard20=1|betweenCard20_40=3
+context_overload	ltCtx=[0, 1, 2]|gteCtx=[1, 2]
+unsigned_extremes	gtNeg1=[]|gteNeg1=[2]|lteNeg1=[0, 1, 2]|ltMin=[0]|gtMin=[2]|eqMin=[1]
+contiguous_fill	lt10Card=10|gte4990Card=10|eq2500=[2500]|between100_102=[100, 101, 102]
+result_boundary	betweenCard=11|gteCard=10
+single_value	gte=1|lte=1|eq=[0]|between=[0]
+over_range_saturation	lte300=[0, 1, 2]|gt300=[]|eq300=[]|neq300=[0, 1, 2]|lt300=[0, 1, 2]|gte300=[]
+between_over_range_and_inverted	over=[1, 2]|overCard=2|inverted=[]|invertedCard=0
+over_range_cardinality	eqCard300=0|neqCard300=4|lteCard300=4|gtCard300=0
+rangeidx_empty	ltCard=0|gteCard=0|eq=[]
+serialize_map_roundtrip	lt5=[0, 1]|gte1=[0, 1, 2]|eq100000=[2]
+build_vs_map	sameLt35=true|sameBetween=true
+over_range_error	err=IllegalArgumentException
+range_ctor_is_run	smallRun=true|smallSize=15|smallRunCount=1|bigRun=true|bigSize=15|bigCard=4990
+add_range_is_run	run=true|size=15|runCount=1|card=1000
+flip_range_is_run	run=true|size=15|card=300
+range_remove_keeps_run	run=true|card=19000|runCount=1
+andnot_keeps_run	run=true|card=9999|contains5000=false
+xor_keeps_run	run=true|card=9997|contains5000=false
+ornot_is_run	card=65534|contains0=true|contains2=false|contains5=true|contains65535=true
+selectrange_keeps_run	run=true|card=65550
+aggregation_run_operands	card=2000|first=0|last=1999|contains1500=true
+run_subset_contains	contains=true|containsNot=false
+range_run_roundtrip	equals=true|outRun=true|card=8900
+mutable_basic	card=4|toArray=[1, 2, 3, 1000]|first=1|last=1000|rank1000=4|select3=1000
+mutable_set_algebra	and=[2, 3]|or=[1, 2, 3, 4]|xor=[1, 4]|andNot=[1]
+immutable_from_bytebuffer	equals=true|card=5|validate=true|sizeMatch=true
+mutable_dataoutput_roundtrip	equals=true|card=5
+immutable_sequential_read	b1=true|b2=true
+cross_package_bytes_identical	identical=true
+cross_package_core_to_buffer	card=4|toArray=[10, 20, 30, 100000]
+mutable_inplace	and=[2, 4]|or=[1, 2, 3, 4]
+flip_divergence	immErr=RuntimeException|mutClone=[7, 8]
+mutable_checked	add1=true|add2=false|rem1=true|rem2=false
+mutable_errors	select=IllegalArgumentException|emptyFirst=NoSuchElementException
+runoptimized_interop	identical=true|card=1000
+mutable_unsigned_roundtrip	equals=true|toArray=[0, 2147483647, -2147483648, -1]
+buffer_or	toArray=[1, 2, 3, 4]|card=4
+buffer_and	[3]
+buffer_xor	[1, 3]
+buffer_or_many	card=36|first=0|last=100011
+array_container	containerCount=1|arrayCount=1|bitmapCount=0|runCount=0|arrCardSum=4
+run_container	containerCount=1|runCount=1|arrayCount=0|bitmapCount=0
+bitmap_container	containerCount=1|bitmapCount=1|runCount=0
+collection_and_empty	bitmapsCount=2|arrayCount=2|arrCardSum=5|emptyContainerCount=0
+l64_basic	card=5|c1=true|c3=false|c1234=true
+l64_unsigned_order	toArray=[0, 1, 9223372036854775807, -9223372036854775808]|sel0=0|sel1=1|sel2=9223372036854775807|sel3=-9223372036854775808
+l64_rank_unsigned	r0=1|r1=2|rMax=3|rNeg1=4|rMin=4
+l64_add_negative_unsigned	sel0=1|sel1=-1|rankNeg1=2
+l64_add_range	card=7|sel0=5|sel6=11
+l64_add_range_signspan	card=4|toArray=[9223372036854775806, 9223372036854775807, -9223372036854775808, -9223372036854775807]
+l64_add_range_errors	eq=IllegalArgumentException|rev=IllegalArgumentException|zero=IllegalArgumentException
+l64_first_last	first=2|last=-32|emptyFirst=NoSuchElementException
+l64_select_error	err=IllegalArgumentException|emptyErr=IllegalArgumentException
+l64_iterator	0,1,9223372036854775807,-9223372036854775808,
+l64_reverse_iterator	100,5,1,
+l64_peekable_advance	p1=9223372036854775807|p2=-9223372036854775807
+l64_set_algebra	xor=[123, 345]|and=[234]|andNot=[123]
+l64_self_ops	xorSelfCard=0|orSelfCard=3
+l64_flip_range	flip1Card=2|flip1Sel1=1|edgeCard=4|edgeSel3=65537
+l64_serialize_overloads_agree	identical=true|crossEquals=true|crossCard=4
+l64_serialize_roundtrip	card=3|sel0=123|sel1=9223372036854775807|sel2=-123|equals=true
+l64nav_unsigned_order	sel0=1|sel1=-1|rankNeg1=2
+l64nav_signed_order	sel0=-1|sel1=1|rankNeg1=1
+l64nav_signed_vs_unsigned_extremes	uSel0=0|uSel3=-9223372036854775808|sSel0=-9223372036854775808|sSel3=9223372036854775807
+l64nav_basic_ops	card=9|c1234=true|c2003=true|c2004=false
+l64nav_add_range_buckets	card=4|first=4294967294|last=4294967297
+l64nav_set_algebra	andCard=3|andArr=[2, 3, 100000000000]|orArr=[1, 2, 3, 4]
+l64nav_rank_select_multibucket	card=5|sel0=2147483648|sel4=10737418236|rankLast=5
+l64nav_legacy_roundtrip	card=3|sel0=123|sel2=-123
+l64nav_portable_roundtrip	card=3|sel0=0|sel2=38654705669
+l64nav_legacy_restores_signedness	sel0=-1|sel1=1|card=2
+l64nav_fixture_32bitvals	card=10|sel0=0|sel9=9
+l64nav_fixture_spreadvals	card=100|sel0=0|sel90=38654705664|sel99=38654705673
+l64nav_fixture_empty_and_highvals	emptyCard=0|highCard=121|highSel0=-42949672971|highSel120=-1|expectedSel120=-1

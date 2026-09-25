@@ -1,0 +1,137 @@
+syntax_lenient_forms	bar=10|baz=12|dotBar=10|dotBaz=12
+syntax_comma_optional	a=y|b=z|clen=3|c1=2|bar=10|baz=12
+syntax_trailing_commas	a=1|b=2|len=3|last=3
+dup_key_last_wins	a=11|rootSize=1
+dup_key_object_merge	keys=[x, y, z]|x=42|y=2|z=100
+dup_key_null_reset	nullHasB=false|nullC=2|numHasB=false|numC=2
+comments_ignored	a=1|b=2|c=3|size=3
+unquoted_strings	path=/usr/local/bin|name=hello world things
+slash_keys	abc=42|xyz=32
+numeric_dotted_paths	deep=foobar1|split100=foobar2
+quoted_special_keys	ab=5|nested=7
+nested_quoted_object_key	viaGet=9|objHasKey=true|joined=a."x.y".z
+mixed_dotted_quoted	leaf=42|outerKeys=[in.ner]
+triple_quoted_string	value=line1\nline2\nline3|lines=3
+quoted_escapes	hasNL=true|hasTab=true|hasQuote=true|hasBackslash=true|len=9
+err_missing_separator	Parse
+err_unclosed_brace	Parse
+err_bad_token	Parse
+primitive_getters	int=42|long=42|double=3.140000|bool=true|str=hello|num=42
+int_truncates_double	x=3|y=-3|xl=3
+number_to_string	x=42|y=3.14
+string_to_number	x=57|y=3.500000
+string_to_boolean	t1=true|t2=true|t3=true|f1=false|f2=false|f3=false
+typed_lists	ints=[1, 2, 3]|longs=[1, 2, 3]|nums=[1, 2, 3]|strs=[a, b, c]|dbls=[1.5, 2.5]|bools=[true, false, true]|anyRef=[1, 2, 3]
+empty_array_any_list	ints=0|strs=0|bools=0|objs=0
+nested_config_object	host=localhost|port=8080|debug=true|objKeys=[host, opts, port]|peerCount=3|peer1Id=2
+has_path_null_semantics	presHas=true|nullHas=false|nullHasOrNull=true|nullIsNull=true|absentHas=false|absentHasOrNull=false
+entryset_flattens	size=3|paths=[a.b, a.c, d]
+is_empty	empty=true|nonEmpty=false
+getter_exception_types	missing=Missing|null=Null|wrongType=WrongType|objAsInt=WrongType|badPath=BadPath
+int_range_check	asLong=9999999999|intThrows=WrongType
+anyref_and_valuetype	iType=NUMBER|sType=STRING|bType=BOOLEAN|listType=LIST|anyI=42|anyB=true
+basic_reference	foo=42|g=true|h=hello
+resolves_to_final_value	b=2|a=2
+reference_chain	foo=57|bar=57
+optional_vanish	rootSize=0|arrLen=0
+substitution_in_concat	x=start<43>end|y=start<>end
+required_missing_throws	UnresolvedSubstitution/false
+self_cycle_throws	UnresolvedSubstitution/true
+two_node_cycle	UnresolvedSubstitution/true
+self_reference_lookback	a=1
+self_reference_concat	a=1foo|b=1xyz
+optional_self_reference	aSize=0|b=foo
+override_hides_undefined	a=42|b=42
+child_field_not_self	baz=42
+resolve_with_source	foo=43
+is_resolved_flag	noSubst=true|beforeResolve=false|afterResolve=true
+allow_unresolved	b=2|resolved=false|getA=NotResolved
+substitution_to_object	cx=1|cy=2|keys=[x, y]
+substitution_to_list	c=[1, 2, 3]
+chain_through_object	d=10|cb=10
+optional_present	y=5
+substitution_object_concat	cluster=6|name=east
+scalar_first_wins	a=1|b=2|c=3
+object_deep_merge	host=a|port=1|timeout=30|keys=[host, port, timeout]
+primitive_blocks_object	a=42|hasX=false
+object_over_primitive	x=1|isObj=true
+lists_replace	list=[1, 2]
+no_merge_across_array	hasB=false|hasC=true|type=OBJECT
+associative_merge	left=a=1,b=2,c=3|right=a=1,b=2,c=3|equal=true
+merge_then_resolve	cx=1|baseKeys=[x, y]
+with_value	a=99|bc=2|baseA=1
+with_only_and_without	onlyHasAX=true|onlyHasAY=false|onlyHasB=false|withoutHasAX=false|withoutHasAY=true
+at_path_and_key	atPath=1|atKey=1
+merge_substituted_object_override	cluster=6|region=eu
+string_concat_tokens	a=true xyz 123 foo
+string_concat_substitution	a=1foo|b=1foo1
+array_concat	a=[1, 2, 3, 4]
+array_concat_self	a=[1, 2, 3, 4, 5, 6]
+object_concat	keys=[b, x]|b=c|x=y|merged=4
+array_element_concat	aLen=1|a0=1 2 3|bLen=1|b0=foo bar 10
+array_newline_elements	len=3|list=[foo, bar, 10]
+plus_equals	a=[1, 2, 3]|b=[2]
+optional_concat	undef=foo|def=fooX|arrUndef=[1]|arrDef=[1, 2]
+concat_type_errors	obj=WrongType/true|arr=WrongType/true
+plus_equals_type_error	WrongType/true
+concat_no_span_newline	Parse
+number_word_concat	v=42 foo
+plus_equals_from_missing	q=[1, 2]
+duration_one_second_forms	1000|1000|1000|1000|1000|1000|1000|1000|1000
+duration_unit_conversion	s_as_ms=2000|s_as_ns=2000000000|m_as_s=180|h_as_m=120|d_as_h=24|bareMs=500
+duration_one_day	days=1|ns=86400000000000|ms=86400000
+duration_java_time	d90s_seconds=90|h_minutes=90
+duration_errors	badUnit=BadValue|badNum=BadValue
+size_binary_1Mi	1048576|1048576|1048576|1048576|1048576|1048576|1048576|1048576|1048576|1048576|1048576|1048576|1048576
+size_si_1MB	1000000|1000000|1000000|1000000|1000000
+size_bytes_and_fraction	b1=1|b2=10|halfM=524288|halfMB=500000
+size_memorysize_bigint	oneM=1048576|yb=1000000000000000000000000
+size_errors	badUnit=BadValue|overflow=BadValue|negative=BadValue
+period_one_year_forms	1y0mo0d|1y0mo0d|1y0mo0d|0y0mo365d|0y0mo365d|0y0mo365d|0y12mo0d|0y12mo0d|0y12mo0d
+period_units	d=10|w_days=21|mo=5|y=8
+unit_lists	durs=[1000, 2000, 500]|sizes=[1024, 1000, 1048576]|memSizes=[1024,1048576,1073741824]
+temporal_m_vs_mo	m_isDuration=true|m_seconds=300|mo_isPeriod=true|mo_months=5
+duration_fractional_and_bare	half_min_ms=30000|quarter_hour_min=15|bare_as_seconds=5
+join_path	simple=a.b.c|special="".a.b."$"
+split_path	simple=[a, b, c]|special=[, a, b, $]
+path_round_trip	back=[a b, c.d, , normal]|equal=true
+quoting_vs_splitting	quotedDot=[a, b.c, d]|numeric=[1, 2, 3]
+quote_string	empty=""|plain="a"|newline="\n"|tab="\t"
+invalid_paths_throw	empty=BadPath|trailingDot=BadPath|leadingDot=BadPath|doubleDot=BadPath|joinEmpty=ConfigException
+path_in_getter	joined=foo."a.b"|value=42
+from_any_ref_types	bool=BOOLEAN|int=NUMBER|dbl=NUMBER|str=STRING|null=NULL
+from_map_and_iterable	objSize=2|objType=OBJECT|a=1|b=2|listSize=3|listType=LIST|elems=[1, 2, 3]
+unwrapped_round_trip	scalar=42|mapClass=true|a=1
+numeric_equality	intEqLong=true|dblEqInt=true|neq=false
+config_vs_object	objEqObj=true|cfgEqCfg=true|objNeqCfg=false
+object_immutable_map	size=2|hasKey=true|keys=[a, b]|put=UnsupportedOperationException|clear=UnsupportedOperationException
+list_immutable	size=3|get1=20|add=UnsupportedOperationException|set=UnsupportedOperationException
+to_config_and_root	rootB=1|backB=1|objGet=1
+number_string_round_trip	a=1e6|b=0.00005|c=132454454354353245
+memory_size_value	toBytes=1024|eq=true|neq=false
+render_key_sorting	order_1_2=true|order_2_10=true|order_10_z=true
+render_round_trip	equal=true|b=1|c=[2, 3]|d=hello|z=true
+json_valid	a=1|c=[true, false]|s=hi
+json_equals_conf	equal=true|a=1|blen=3
+json_rejects_extensions	unquotedKey=Parse|comment=Parse|trailingComma=Parse|missingColon=Parse
+json_rejects_malformed	plusNum=Parse|unterminated=Parse|emptyArrayComma=Parse
+props_nested	abc=42|abd=hello|x=1
+props_numeric_list	list=[zero, one, two]|size=3
+props_numeric_gaps	list=[zero, one, three]
+props_object_wins	hasAB=true|ab=child|deep=deep
+bean_scalars	count=3|total=400|ratio=1.0|enabled=true|name=svc
+bean_lists	nums=[1, 2, 3]|words=[a, b]
+bean_enums	color=GREEN|palette=[RED, BLUE]
+bean_bad_enum	BadValue
+bean_units	timeoutMs=5000|maxBytes=1048576
+bean_camel_from_hyphen	fooBar=7
+bean_unknown_ignored	count=1|name=x
+bean_missing_required	ValidationFailed
+valid_ok	result=NONE
+valid_missing_key	kind=ValidationFailed|problems=1
+valid_string_compatible	result=NONE
+valid_object_mismatch	result=ValidationFailed
+valid_restrict_paths	restrictPresent=NONE|restrictMissing=ValidationFailed
+valid_unresolved_throws	result=NotResolved
+get_enum	day=MONDAY|bad=BadValue
+get_enum_list	days=[MONDAY, FRIDAY, SUNDAY]

@@ -1,0 +1,44 @@
+# Canonical list of hidden test method names (the grading denominator).
+# Any expected test with no XML result (compile error / crash / timeout) is scored failed.
+# --- CoreCodingTests ---
+testScalarElementRoundTrip
+testScalarAttributeForm
+testMissingRequiredAndOptionalNil
+testKeyedDictionary
+testUnkeyedArrayAndNils
+testEmptyElementsAndSingleChild
+testClassInheritanceSuperEncoder
+testEndToEndNoteRoundTrip
+testIntrinsicValueKey
+# --- NodeCodingTests ---
+testDynamicNodeEncodingBoth
+testDynamicNodeDecodingMatrix
+testPropertyWrappers
+testIntrinsicValueWithAttribute
+testRootLevelAttribute
+# --- ChoiceCodingTests ---
+testSimpleChoiceScalars
+testCompositeChoiceStructs
+testNestedComplexChoiceOrdering
+testNestedChoiceArrayInlined
+testNestedAttributeChoiceEncode
+# --- StrategyTests ---
+testKeyEncodingStrategies
+testKeyDecodingStrategies
+testDateStrategies
+testDataStrategyCustom
+testNodeEncodingStrategyCustom
+testNonConformingFloat
+# --- FormattingTests ---
+testPrettyPrintIndentation
+testEscaping
+testCDATA
+testHeaderVariants
+testDoctype
+testRootAttributes
+# --- ParsingOptionTests ---
+testNamespaceProcessing
+testWhitespaceOptions
+testMixedContent
+testEmptyElementEmptyString
+testErrorContextLength

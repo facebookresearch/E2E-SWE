@@ -1,0 +1,159 @@
+atx_levels	<h1>h1</h1>\n<h2>h2</h2>\n<h3>h3</h3>\n<h4>h4</h4>\n<h5>h5</h5>\n<h6>h6</h6>\n<p>####### not</p>\n
+atx_edges	<h1></h1>\n<p>#no</p>\n<h1>space</h1>\n<h3>indented</h3>\n<h2>closed</h2>\n
+setext	<h1>Foo</h1>\n<h2>Bar</h2>\n
+thematic_breaks	<hr />\n<hr />\n<hr />\n<hr />\n<hr />\n
+paragraphs	<p>aaa\nbbb</p>\n<p>ccc\nddd</p>\n
+blank_lines	<p>aaa</p>\n<p>bbb</p>\n
+setext_vs_hr	<h2>Foo\nbar</h2>\n<p>baz</p>\n
+basic	<p><em>foo</em> <em>bar</em> <strong>baz</strong> <strong>qux</strong></p>\n
+intraword	<p>foo<em>bar</em>baz</p>\n<p>foo_bar_baz</p>\n
+nesting	<p><em>foo <strong>bar</strong> baz</em></p>\n<p><strong>foo <em>bar</em> baz</strong></p>\n
+rule_of_three	<p><em>foo<strong>bar</strong></em></p>\n<p><em><strong>foo</strong></em></p>\n
+not_emphasis	<ul>\n<li>foo *</li>\n</ul>\n<p>*foo bar *</p>\n<p>a * foo bar*</p>\n
+unmatched	<p>*foo_</p>\n<p>*<em>foo</em></p>\n<p>_foo**</p>\n
+punctuation_runs	<p><strong><strong>foo</strong></strong></p>\n<p><em><em>foo</em></em></p>\n<p><em><em>foo</em></em></p>\n
+rule_of_three_asym	<p><em>foo<strong>bar</strong>baz</em></p>\n<p><strong>foo<em>bar</em>baz</strong></p>\n<p><strong><em>foo</em> bar</strong></p>\n
+flanking_punct	<p><em>(<em>foo</em>)</em></p>\n<p><strong>(<strong>foo</strong>)</strong></p>\n<p>foo-<em>(bar)</em></p>\n
+underscore_flanking	<p><em>foo bar</em></p>\n<p><em>(bar)</em>.</p>\n<p><em>foo_bar_baz</em></p>\n
+escaped_delims	<p>*not* <em>yes</em></p>\n<p><em>foo*bar</em></p>\n<p>*<em>a*</em></p>\n
+long_runs	<p><em><strong><strong>foo</strong></strong></em></p>\n<p><em><strong>foo</strong></em> <em><strong>bar</strong></em></p>\n
+indented	<pre><code>a simple\n  indented code block\n</code></pre>\n
+indented_escape	<pre><code>&lt;a&gt; &amp; &quot;quote&quot;\n</code></pre>\n
+fenced_info	<pre><code class="language-ruby">def foo\n  1\nend\n</code></pre>\n
+fenced_tilde	<pre><code>foo\n```\nbar\n</code></pre>\n
+fenced_length	<pre><code>```\n&lt;x&gt; &amp; y\n</code></pre>\n
+fenced_empty	<pre><code></code></pre>\n
+span_literal	<p><code>foo *bar* baz</code></p>\n
+span_backticks	<p><code>foo ` bar</code></p>\n
+span_space_strip	<p><code>foo</code></p>\n<p><code> </code></p>\n
+span_escape	<p><code>&lt;a&gt; &amp; &quot;q&quot;</code></p>\n
+bullet_tight	<ul>\n<li>a</li>\n<li>b</li>\n<li>c</li>\n</ul>\n
+bullet_loose	<ul>\n<li>\n<p>a</p>\n</li>\n<li>\n<p>b</p>\n</li>\n<li>\n<p>c</p>\n</li>\n</ul>\n
+ordered_basic	<ol>\n<li>one</li>\n<li>two</li>\n<li>three</li>\n</ol>\n
+ordered_start	<ol start="5">\n<li>five</li>\n<li>six</li>\n</ol>\n
+ordered_paren	<ol>\n<li>a</li>\n<li>b</li>\n</ol>\n
+nested	<ul>\n<li>a\n<ul>\n<li>b</li>\n<li>c</li>\n</ul>\n</li>\n<li>d</li>\n</ul>\n
+item_multiblock	<ul>\n<li>\n<p>a</p>\n<pre><code>code\n</code></pre>\n</li>\n<li>\n<p>b</p>\n</li>\n</ul>\n
+quote_basic	<blockquote>\n<p>a\nb\nc</p>\n</blockquote>\n
+quote_lazy	<blockquote>\n<p>a\nb\nc</p>\n</blockquote>\n
+quote_nested	<blockquote>\n<blockquote>\n<p>deep</p>\n</blockquote>\n<h1>H</h1>\n</blockquote>\n
+quote_list	<blockquote>\n<ul>\n<li>a</li>\n<li>b</li>\n</ul>\n</blockquote>\n
+loose_via_gap	<ul>\n<li>\n<p>x</p>\n</li>\n<li>\n<p>y</p>\n</li>\n<li>\n<p>z</p>\n</li>\n</ul>\n
+ordered_interrupt	<p>Foo</p>\n<ol>\n<li>a</li>\n<li>b</li>\n</ol>\n<p>Bar\n2. c</p>\n
+item_lazy_nested	<ul>\n<li>a\ncontinued\n<ul>\n<li>nested</li>\n</ul>\n</li>\n<li>b</li>\n</ul>\n
+quote_deep_mixed	<blockquote>\n<h1>H</h1>\n<p>para</p>\n<blockquote>\n<p>inner\nquote</p>\n</blockquote>\n</blockquote>\n
+adjacent_bullet_markers	<ul>\n<li>a</li>\n<li>b</li>\n</ul>\n<ul>\n<li>c</li>\n<li>d</li>\n</ul>\n<ul>\n<li>e</li>\n</ul>\n
+inline_plain	<p><a href="/url">text</a></p>\n
+inline_title	<p><a href="/url" title="a title">text</a></p>\n
+inline_angle_em	<p><a href="/my url"><em>em</em> text</a></p>\n
+ref_full	<p><a href="/url" title="t">text</a></p>\n
+ref_collapsed	<p><a href="/url">ref</a></p>\n
+ref_shortcut	<p><a href="/url">ref</a></p>\n
+ref_normalize	<p><a href="/url">Foo   Bar</a></p>\n
+image_inline	<p><img src="/img.png" alt="alt text" title="ttl" /></p>\n
+image_alt_markup	<p><img src="/img.png" alt="foo bar" /></p>\n
+autolink_uri	<p><a href="http://example.com/a?b=c">http://example.com/a?b=c</a></p>\n
+autolink_email	<p><a href="mailto:foo@bar.example.com">foo@bar.example.com</a></p>\n
+link_special	<p><a href="/url?a=1&amp;b=2" title="a &amp; b">t</a></p>\n
+link_nested_brackets	<p><a href="/url">a [b] c</a> and <a href="/foo(bar)baz">x</a></p>\n
+ref_multiline_title	<p><a href="/my url" title="multi\nline\ntitle">foo</a></p>\n
+link_vs_emphasis	<p>*<a href="/url">foo*</a></p>\n<p><a href="/url">foo *bar</a>*</p>\n
+image_in_link	<p><a href="/link"><img src="/img.png" alt="alt" /></a></p>\n
+autolink_edges	<p><a href="mailto:foo@bar.com">mailto:foo@bar.com</a> <a href="irc://x">irc://x</a> <not a url> <a href="http://a.b?c=d#e">http://a.b?c=d#e</a></p>\n
+link_escapes	<p><a href="/foo)bar">a</a> <a href="/x%20y">b</a> <a href="/©">c</a></p>\n
+ref_reuse	<p><a href="/u" title="T">A</a> then <a href="/u" title="T">a</a></p>\n
+html_block	<div class="x">\n*not emphasis*\n</div>\n
+html_inline	<p>foo <span id="a"> bar </span> <br/> baz</p>\n
+entity_named	<p>© &amp; &lt; &gt; Á ¾</p>\n
+entity_numeric	<p># Ӓ A é</p>\n
+entity_invalid	<p>&amp;nonsense; � �</p>\n
+backslash_escape	<p>*not em* ` [ ] \</p>\n
+backslash_literal	<p>\A \3 \€</p>\n
+hard_break_spaces	<p>foo<br />\nbar</p>\n
+hard_break_backslash	<p>foo<br />\nbar</p>\n
+soft_break	<p>foo\nbar</p>\n
+escape_html	<p>foo &lt;span&gt;bar&lt;/span&gt;</p>\n<p>&lt;div&gt;block&lt;/div&gt;</p>\n
+softbreak_br	<p>foo<br>bar<br>baz</p>\n
+sanitize_urls	<p><a rel="nofollow" href="">a</a> <a rel="nofollow" href="http://ok.example/">b</a></p>\n
+percent_encode	<p>[a](/path with space?x=ä)</p>\n
+percent_encode_preserve	<p><a href="/a%20b?x=1&amp;y=2#frag/z">a</a></p>\n
+omit_single_p	just one paragraph
+omit_single_p_multi	<p>one</p>\n<p>two</p>\n
+doc_children	root=Document|children=Heading,Paragraph,BulletList,FencedCodeBlock
+heading_fields	type=Heading|level=3|text=Hello world|childTypes=Text,Emphasis
+fenced_fields	info=java x|literal=line1\nline2\n|fenceChar=`|fenceLen=3
+ordered_fields	type=OrderedList|start=3|delim=.|tight=true
+link_fields	type=Link|dest=/url|title=ttl|childTypes=Text,Emphasis|text=a b
+list_tight_flag	tight=true|loose=false
+mutate_append_unlink	before=Heading,Paragraph|after=Paragraph|firstText=body
+mutate_insert	order=abc|first=Text|last=c
+nodes_between	between=bc
+hardbreak_node	childTypes=Text,HardLineBreak,Text
+construct_setters_nav	order=Heading,Paragraph|firstIsHeading=true|pPrev=Heading|bodyParent=Paragraph|level=3|linkDest=/u|linkTitle=t
+inline_emphasis_span	line=2|col=4|input=9|len=5|sub=*baz*
+block_heading_span	line=0|col=0|input=0|len=7
+default_no_spans	spanCount=0
+multiline_block_spans	count=3|(0,3)|(1,3)|(2,3)
+subspan	orig=line=2|col=4|input=9|len=5|sub=line=2|col=5|input=10|len=2
+inline_children_spans	linkSpan=line=0|col=4|input=4|len=13|sub=[a *b* c](/u)
+list_item_spans	items=(0,0,3)(1,0,4)(2,0,5)
+nested_block_span	count=2|first=line=0|col=2|input=2|len=5
+strong_span	line=0|col=2|input=2|len=8|sub=**bold**
+headings	# a\n\n## b\n\n### c\n\n#### d\n\n##### e\n\n###### f\n
+emphasis	*em* and **strong** and ***both***\n
+fenced_code	```info\ntest\n```\n
+fenced_widen	````\n```\ninner\n````\n
+indented_code	    hi\n    code\n
+lists	- a\n- b\n\n1. one\n2. two\n
+block_quote	> quoted\n> lines\n
+link_image	[t](/url "ttl") and ![a](/img.png)\n
+thematic_break	---\n\nfoo\n
+escaping	a *literal* star: \* and a hash # start\n
+nested_quote_list	> - a\n> - b\n> \n> text\n
+heading_inline	# Title with `code` and [a](/u)\n
+hard_break	foo  \nbar\n
+inline_html_autolink	text <span>x</span> and [http://ex.com](http://ex.com)\n
+loose_ordered	1. one\n\n2. two\n   \n   more\n
+setext_roundtrip	Foo\nbar\n===\n\n## Baz\n
+mixed_inline	a **b `c` d** and *e* with \* and a.b#c\n
+links_titles	[t](/u "ti") ![a](/i.png "im") [http://x.example](http://x.example)\n
+deep_quote	> > a\n> > \n> > - x\n> > \n> > ```\n> > code\n> > ```\n
+breaks	foo  \nbar\nbaz\n
+html	<div>\nraw\n</div>\n\ntext <b>x</b> more\n
+ordered_start_paren	3) three\n4) four\n
+default_is_compact	default=foo foo\nbar\nbar
+heading_modes	compact=Heading\nFoo|separate=Heading\n\nFoo|strip=Heading: Foo
+paragraphs_modes	compact=foo foo\nbar\nbar|separate=foo foo\n\nbar\nbar|strip=foo foo bar bar
+bullet_modes	compact=foo\n* foo\n* bar\nbar|separate=foo\n\n* foo\n* bar\n\nbar|strip=foo foo bar bar
+link_text	compact=see "the site" (http://example.com) now|strip=see "the site" (http://example.com) now
+inline_text	compact=a "code" and em and strong
+nested_list_modes	compact=- a\n  - b\n  - c\n- d|separate=- a\n  - b\n  - c\n- d
+quote_modes	compact=«quoted text\nmore»|separate=«quoted text\nmore»|strip=«quoted text more»
+code_block_modes	compact=text\nline1\nline2\nafter|separate=text\n\nline1\nline2\n\nafter
+image_and_hr	compact=before\n"alt" (/img.png)\n***\nafter|strip=before "alt" (/img.png) after
+def_no_output	<p><a href="/url" title="title">foo</a></p>\n
+def_forward	<p>use <a href="/url">foo</a> here</p>\n
+def_no_interrupt	<p>text\n[foo]: /url</p>\n
+def_node_fields	type=LinkReferenceDefinition|label=Foo Bar|dest=/dest|title=the title
+def_multiple	<p><a href="/one">foo</a> and <a href="/two">bar</a></p>\n
+def_in_code	<pre><code>[foo]: /url\n</code></pre>\n<p>[foo]</p>\n
+def_duplicate	<p><a href="/first">a</a></p>\n
+empty	[]
+tab_code	<pre><code>foo	baz		bim\n</code></pre>\n
+tab_mixed	<pre><code>foo\n</code></pre>\n
+precedence_block	<ul>\n<li>`one</li>\n<li>two`</li>\n</ul>\n
+crlf	<p>foo</p>\n<p>bar\nbaz</p>\n
+nul_replacement	<p>foo�bar</p>\n
+escaped_entity	<p>&amp;copy; vs ©</p>\n
+trailing_ws	<p>foo</p>\n
+setext_blankline	<p>Foo</p>\n<hr />\n
+mixed_document	<h1>Title</h1>\n<blockquote>\n<p>quote with a <a href="/url">link</a></p>\n<ul>\n<li>item</li>\n</ul>\n</blockquote>\n<pre><code class="language-js">code();\n</code></pre>\n
+open_tag_attrs	<a foo="bar" bam = 'baz' _boolean zoop:33=zoop:33 />\n
+close_selfclose	<p></a> and <b2/> and <responsive-image src="x.jpg" /></p>\n
+comment	<p>foo <!-- this is a comment - with hyphens --> bar</p>\n
+processing_instruction	<p>foo <?php echo '>'; ?> bar</p>\n
+cdata	<p>foo <![CDATA[>&<]]> bar</p>\n
+declaration	<p>foo <!DOCTYPE html> bar</p>\n
+invalid_tags	<p>&lt;33&gt; &lt;__&gt; and &lt;a h*#ref=&quot;hi&quot;&gt;</p>\n
+invalid_unclosed	<p>&lt;a href=&quot;hi'&gt; &lt;a href=hi'&gt;</p>\n
+parse_reader	<h1>Heading</h1>\n<p><em>text</em></p>\n

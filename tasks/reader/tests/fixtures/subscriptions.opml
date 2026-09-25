@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>My Subscriptions</title>
+  </head>
+  <body>
+    <outline type="rss" title="First" text="First" xmlUrl="http://feed-one.example.com/" htmlUrl="http://feed-one.example.com/" description="First feed" />
+    <outline type="rss" title="Second" text="Second" xmlUrl="http://feed-two.example.com/" htmlUrl="http://feed-two.example.com/" />
+    <outline text="folder">
+      <outline type="rss" title="Nested" xmlUrl="http://feed-three.example.com/" />
+    </outline>
+  </body>
+</opml>

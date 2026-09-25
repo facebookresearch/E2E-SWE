@@ -1,0 +1,41 @@
+# Canonical list of hidden test method names (the grading denominator), one "Class.method" per
+# line. Each test is a single consolidated scenario in its own file (<Class>.swift) for per-test
+# compile isolation. Any expected test with no recorded pass (compile error / crash / hang / OOM /
+# missing) is scored failed by results_to_ctrf.py.
+
+ParseAndRemainderTests.testParseSequenceAndRemainder
+TransformOperatorsTests.testMapCompactMapFilter
+FlatMapConditionalTests.testFlatMapConditional
+SequencingTransformTests.testSequencingAndStructTransform
+BuildConditionalTests.testBuildConditional
+HighArityTupleTests.testHighArityFlatTuple
+NestedParsePrintTests.testNestedParsePrintLayouts
+IntParserTests.testIntSignsBoundsAndRadix
+IntOverflowTests.testIntOverflowError
+DoubleFormatsTests.testDoubleFormats
+DoubleSpecialsTests.testDoubleSpecialValues
+BoolTests.testBool
+DigitsTests.testDigits
+PrefixTests.testPrefixVariants
+PrefixUpToThroughTests.testPrefixUpToThrough
+StartsWithLiteralsTests.testStartsWithAndLiterals
+WhitespaceTests.testWhitespaceConfigurations
+CharacterSetTests.testCharacterSetParsing
+ManyBoundsTests.testManySeparatorTerminatorBounds
+ManyReduceInfiniteTests.testManyReduceAndInfiniteLoop
+OneOfTests.testOneOfOrderingAndReplaceError
+LookaheadTests.testLookaheadFamily
+BacktrackingPipeTests.testBacktrackingAndPipe
+MemberwiseRoundTripTests.testMemberwiseRoundTrip
+ManyPrintTests.testManyPrintRoundTrip
+CombinatorPrintingTests.testCombinatorPrinting
+PrinterRoundTripErrorsTests.testPrinterRoundTripErrors
+UTF8ScalarsTests.testUTF8AndUnicodeScalars
+FromConversionTests.testFromSubstringConversion
+PipeAcrossInputTests.testPipeAcrossInputTypes
+SingleFailureRenderingTests.testSingleFailureLocationAndCaret
+MultipleFailureRenderingTests.testGroupedAndRankedFailures
+TruncationAlignmentTests.testTruncationAndLineAlignment
+NotPipeCustomErrorTests.testNotPipeAndCustomError
+StringEnumTests.testStringRawValueEnum
+IntEnumTests.testIntRawValueEnum

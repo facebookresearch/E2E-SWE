@@ -1,0 +1,4 @@
+c Gauss-Jordan / ElimLin fixture — from upstream tests/anf-files/gj.anf.
+c With --el 1 the system yields the equivalence x(3) + x(2).
+x1*x2 + x1 + x2
+x1*x2 + x1 + x3

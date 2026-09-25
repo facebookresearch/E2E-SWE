@@ -1,0 +1,5 @@
+c System over x0, x1: x0*x1 = 0 (either x0=0 or x1=0). Exactly three satisfying assignments:
+c   {x0=0, x1=0}, {x0=0, x1=1}, {x0=1, x1=0}.
+c Using x0 (not x1) as the lowest-index variable ensures bosphorus does not allocate an
+c implicit free x0 that would double the solution count.
+x0*x1

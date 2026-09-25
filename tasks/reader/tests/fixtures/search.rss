@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Search Test Feed</title>
+    <description>Entries for full text search tests.</description>
+    <link>http://search.example.com/</link>
+
+    <item>
+        <title>Python programming guide</title>
+        <description>Learn the basics of Python here.</description>
+        <link>http://search.example.com/python</link>
+        <guid isPermaLink="false">srch-1</guid>
+    </item>
+    <item>
+        <title>Rust programming patterns</title>
+        <description>Idiomatic Rust code samples.</description>
+        <link>http://search.example.com/rust</link>
+        <guid isPermaLink="false">srch-2</guid>
+    </item>
+    <item>
+        <title>Garden tomatoes</title>
+        <description>How to grow great tomatoes in your garden.</description>
+        <link>http://search.example.com/tomato</link>
+        <guid isPermaLink="false">srch-3</guid>
+    </item>
+</channel>
+</rss>

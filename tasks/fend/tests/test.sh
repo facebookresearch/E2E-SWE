@@ -1,0 +1,26 @@
+#!/bin/bash
+# Offline grading. The Rust toolchain and the pytest harness are pre-baked in the per-task image
+# (see environment/Dockerfile), and CARGO_NET_OFFLINE/PIP_NO_INDEX are set. There is NO network —
+# do not add apt-get / curl / uv / pip-from-index steps.
+#
+# Note: no `set -e` — the reward logic below relies on capturing pytest's exit code.
+
+# /app/.git can arrive owned by a foreign UID: Harbor preserves numeric ownership across the
+# artifact round-trip, and this container runs as root. Any git command the build issues would
+# then fail with "dubious ownership". System scope is required rather than GIT_CONFIG_* in the
+# environment: build tools strip those from subprocesses (pip does, for one), so only on-disk
+# config reaches the git call that matters.
+git config --system --add safe.directory '*' 2>/dev/null || true
+
+# Build/install the project. setup.sh was written by the agent (or by solve.sh for GT eval) and
+# builds the `fend` binary offline, installing it onto PATH.
+bash ./setup.sh
+
+# pytest drives the compiled `fend` binary via subprocess; pytest-json-ctrf emits the CTRF file.
+pytest --ctrf /logs/verifier/ctrf.json /tests/test_fend.py -v --timeout=30 -rA
+
+if [ $? -eq 0 ]; then
+  echo 1 > /logs/verifier/reward.txt
+else
+  echo 0 > /logs/verifier/reward.txt
+fi

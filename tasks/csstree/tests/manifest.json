@@ -1,0 +1,148 @@
+[
+  {
+    "file": "atrules.harness.mjs",
+    "cases": [
+      "atrule: nested @media / @supports round-trips with correct structure",
+      "atrule: a blockless at-rule (@import) parses with a prelude and null block",
+      "atrule: @font-face descriptors parse as a declaration block",
+      "atrule: @keyframes with percentage-keyed rules round-trips",
+      "atrule: an exclamation comment is preserved through parse+generate"
+    ]
+  },
+  {
+    "file": "defsyntax.harness.mjs",
+    "cases": [
+      "definitionSyntax.parse: a \"|\" group yields the expected AST shape",
+      "definitionSyntax.parse: multiplier notation is captured as min/max/comma",
+      "definitionSyntax.walk: visits group and term nodes in order",
+      "definitionSyntax.generate: serializes an AST back to its canonical definition string",
+      "definitionSyntax.generate: forceBraces makes implicit groups explicit; compact strips spaces"
+    ]
+  },
+  {
+    "file": "find.harness.mjs",
+    "cases": [
+      "find: returns the first node in natural order matching the predicate",
+      "findLast: returns the first match in reverse order",
+      "findAll: returns every matching node in natural order"
+    ]
+  },
+  {
+    "file": "generate.harness.mjs",
+    "cases": [
+      "generate: serializes a stylesheet back to compact CSS",
+      "generate: round-trips a value with functions and hex colors (safe mode default)",
+      "generate: spec mode drops whitespace the spec deems unnecessary",
+      "generate: auto-inserts whitespace to prevent unintended token merges",
+      "generate: preserves raw values verbatim when the value was not parsed",
+      "generate: with sourceMap returns { css, map } and the exact mapping",
+      "generate: throws on an unknown node type",
+      "generate: parse -> generate -> parse round-trips to an equivalent AST"
+    ]
+  },
+  {
+    "file": "lexer.harness.mjs",
+    "cases": [
+      "lexer.matchProperty: a valid value matches and reports no error",
+      "lexer.matchProperty: an invalid value fails with a SyntaxMatchError",
+      "lexer.matchProperty: custom properties are reported as not applicable",
+      "lexer.matchProperty: CSS-wide keywords match any property",
+      "lexer.matchType: a known type validates values and rejects mismatches",
+      "lexer.matchType: an unknown type name yields a SyntaxReferenceError",
+      "lexer.matchDeclaration: matches a parsed Decl node against its property grammar",
+      "lexer engine: the \"|\" combinator accepts either alternative and rejects others",
+      "lexer engine: the \"{min,max}\" multiplier enforces occurrence bounds",
+      "lexer engine: the \"#\" comma-list multiplier requires comma separation and no trailing comma",
+      "lexer.fork: custom property definitions validate against the provided grammar",
+      "lexer engine: the \"&&\" combinator requires all terms in any order",
+      "lexer engine: the \"||\" combinator requires at least one term in any order",
+      "lexer engine: the \"?\" and \"*\" multipliers make terms optional / repeatable",
+      "lexer.checkStructure: reports no errors (false) for a well-formed AST",
+      "lexer.findAllFragments: locates every value fragment of a given type across a stylesheet",
+      "lexer.getType / getProperty: expose the resolved definition nodes for known names"
+    ]
+  },
+  {
+    "file": "list.harness.mjs",
+    "cases": [
+      "List: appendData builds a list with correct size/first/last/toArray",
+      "List: fromArray/toArray convert between a plain array and a List",
+      "List: map/filter/reduce/some/forEach behave like their Array counterparts",
+      "List: shift/pop remove and return the end items as list wrappers",
+      "List: prependData/unshift add to the front"
+    ]
+  },
+  {
+    "file": "parse.harness.mjs",
+    "cases": [
+      "parse: a full stylesheet builds the expected top-level node structure",
+      "parse: context \"selector\" parses a compound selector into ordered simple selectors",
+      "parse: context \"declaration\" splits property/value and detects !important",
+      "parse: context \"value\" parses a multi-token value into typed nodes",
+      "parse: an at-rule with prelude and block is parsed in detail by default",
+      "parse: parseValue:false leaves the declaration value as a Raw node",
+      "parse: parseRulePrelude:false leaves the selector as a Raw node",
+      "parse: parseAtrulePrelude:false leaves the at-rule prelude as a Raw node",
+      "parse: parseCustomProperty toggles detailed parsing of custom-property values",
+      "parse: positions:true records source location offsets on nodes",
+      "parse: tolerant recovery wraps bad content in Raw and reports each error via onParseError",
+      "parse: onComment receives comment values in source order"
+    ]
+  },
+  {
+    "file": "selectors.harness.mjs",
+    "cases": [
+      "selector: a compound selector splits into type, id, and class simple selectors",
+      "selector: descendant/child/sibling combinators appear as Joiner nodes",
+      "selector: an attribute selector captures name, matcher, and value",
+      "selector: a structural pseudo-class parses its An+B argument as an Nth/AnPlusB node",
+      "selector: a functional pseudo-class (:not) holds a nested selector and round-trips",
+      "selector: a pseudo-element uses \"::\" and parses as PseudoElemMatch",
+      "selector: a selector list preserves each complex selector as its own MatchSeq node"
+    ]
+  },
+  {
+    "file": "tokenizer.harness.mjs",
+    "cases": [
+      "tokenize: emits typed tokens with correct source slices in order",
+      "tokenize: distinguishes dimension, number, and hash tokens in a value",
+      "tokenize: token type tables round-trip name <-> numeric code"
+    ]
+  },
+  {
+    "file": "utils.harness.mjs",
+    "cases": [
+      "property(): decomposes vendor prefix and hack for a declaration property name",
+      "property(): recognizes custom properties and is case-insensitive for standard names",
+      "keyword(): analyzes an identifier without hack detection",
+      "ident codec: decode and encode are inverse for escaped identifiers",
+      "string codec: decode strips quotes/escapes; encode quotes and escapes",
+      "url codec: decode and encode handle escaped parentheses and spaces",
+      "clone(): produces an independent deep copy that can be mutated in isolation",
+      "fromPlainObject/toPlainObject: convert children between List and Array"
+    ]
+  },
+  {
+    "file": "values.harness.mjs",
+    "cases": [
+      "value: a function call parses as a Function node with name and argument children",
+      "value: a url() with a quoted argument parses as a Url node with the inner string",
+      "value: a unicode-range token parses as a UnicodeRange node",
+      "value: numeric component types are distinguished (Percentage / Dimension / Number)",
+      "value: a hex color parses as a Hash node whose value excludes the leading #"
+    ]
+  },
+  {
+    "file": "walk.harness.mjs",
+    "cases": [
+      "walk: enter visits every node in natural (document) order",
+      "walk: leave fires after a node's children, yielding post-order",
+      "walk: the visit option restricts the handler to one node type",
+      "walk: this.skip prevents descent into a node's subtree",
+      "walk: this.break halts traversal entirely",
+      "walk: reverse:true iterates children last-to-first",
+      "walk: handler context exposes closest ancestors (declaration + type filter)",
+      "walk: list.remove during traversal deletes nodes and reserializes correctly"
+    ]
+  }
+]

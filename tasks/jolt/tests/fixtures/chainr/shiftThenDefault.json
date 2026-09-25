@@ -1,0 +1,38 @@
+{
+  "input" : {
+    "a" : {
+      "v" : 10
+    },
+    "b" : {
+      "v" : 20
+    }
+  },
+  "spec" : [ {
+    "operation" : "shift",
+    "spec" : {
+      "*" : {
+        "v" : "vals.&1"
+      }
+    }
+  }, {
+    "operation" : "default",
+    "spec" : {
+      "vals" : {
+        "c" : 99
+      },
+      "meta" : {
+        "source" : "jolt"
+      }
+    }
+  } ],
+  "expected" : {
+    "vals" : {
+      "a" : 10,
+      "b" : 20,
+      "c" : 99
+    },
+    "meta" : {
+      "source" : "jolt"
+    }
+  }
+}

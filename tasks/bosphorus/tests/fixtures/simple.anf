@@ -1,0 +1,2 @@
+c A tiny ANF: x1 XOR x2 = 0, so x1 = x2 (equivalence)
+x1 + x2

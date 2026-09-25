@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mindwalk.local/schema/report.schema.json",
+  "title": "mindwalk report",
+  "description": "LLM-assisted evaluation of one session trace. Findings come from the judge; dimension verdicts are derived mechanically from finding severities so reports stay comparable across runs.",
+  "type": "object",
+  "required": ["version", "session", "judge", "taskSummary", "dimensions", "narrative"],
+  "properties": {
+    "version": { "const": 1 },
+    "session": {
+      "type": "object",
+      "required": ["id", "harness", "eventCount"],
+      "properties": {
+        "id": { "type": "string" },
+        "harness": { "type": "string" },
+        "model": { "type": "string" },
+        "eventCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Event count of the trace the report was generated from; a cheap display signal — freshness is decided by judge.inputDigest"
+        },
+        "userTurns": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "User-turn count at generation time; with eventCount it lets list badges spot message-only session growth cheaply"
+        }
+      },
+      "additionalProperties": false
+    },
+    "judge": {
+      "type": "object",
+      "required": ["cli", "promptVersion", "generatedAt", "inputDigest"],
+      "properties": {
+        "cli": { "type": "string" },
+        "model": {
+          "type": "string",
+          "description": "The LLM that actually judged, as reported by the CLI itself; best-effort, display and comparability only — never part of freshness"
+        },
+        "requestedModel": {
+          "type": "string",
+          "description": "The alias the run was asked for (e.g. \"sonnet\"), kept so a repeated aliased request can recognize its own cached report"
+        },
+        "promptVersion": { "type": "integer", "minimum": 1 },
+        "generatedAt": { "type": "string" },
+        "inputDigest": {
+          "type": "string",
+          "description": "SHA-256 hex of the evidence document the judge read; the report is fresh only while the trace still renders to this digest"
+        }
+      },
+      "additionalProperties": false
+    },
+    "taskSummary": { "type": "string" },
+    "dimensions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["name", "verdict", "findings"],
+        "properties": {
+          "name": { "enum": ["exploration", "scope", "wandering", "verification"] },
+          "verdict": {
+            "enum": ["good", "warning", "problem", "insufficient-data"],
+            "description": "max(finding severity), forced to insufficient-data when the trace observability grades the dimension's source signal unavailable"
+          },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["claim", "severity", "evidenceSeqs"],
+              "properties": {
+                "claim": { "type": "string" },
+                "severity": { "enum": ["info", "warning", "problem"] },
+                "evidenceSeqs": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": { "type": "integer", "minimum": 0 },
+                  "description": "Event seqs backing the claim; validated against the trace — invalid references are dropped, and a finding with no valid reference left is dropped entirely"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notableMoments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["seq", "note"],
+        "properties": {
+          "seq": { "type": "integer", "minimum": 0 },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "narrative": { "type": "string" }
+  },
+  "additionalProperties": false
+}

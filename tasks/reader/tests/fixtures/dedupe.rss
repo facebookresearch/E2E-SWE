@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Dedupe RSS</title>
+    <description>Entries with duplicate enclosures.</description>
+    <link>http://dup.example.com/</link>
+
+    <item>
+        <title>Multiple Enclosures</title>
+        <description>One entry with duplicate enclosures.</description>
+        <link>http://dup.example.com/posts/1</link>
+        <guid isPermaLink="false">dup-1</guid>
+        <enclosure url="http://dup.example.com/file.mp3" type="audio/mpeg" />
+        <enclosure url="http://dup.example.com/file.mp3" type="audio/mpeg" />
+        <enclosure url="http://dup.example.com/other.mp3" type="audio/mpeg" />
+    </item>
+</channel>
+</rss>
