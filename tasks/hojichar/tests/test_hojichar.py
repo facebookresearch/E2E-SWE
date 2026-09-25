@@ -2207,7 +2207,7 @@ class TestDedupDeduplicators:
     def test_redis_dedup_rejects_duplicate(self):
         """RedisDeduplicator rejects duplicate documents via Redis."""
         if not self._redis_available():
-            pytest.skip("Redis server not available on localhost:6379")
+            pytest.fail("Redis server not available on localhost:6379")
 
         from uuid import uuid4
 
@@ -2232,7 +2232,7 @@ class TestDedupDeduplicators:
     def test_redis_dedup_raises_without_lsh_keys(self):
         """RedisDeduplicator raises ValueError when document has no dedup_lsh."""
         if not self._redis_available():
-            pytest.skip("Redis server not available on localhost:6379")
+            pytest.fail("Redis server not available on localhost:6379")
 
         from uuid import uuid4
 

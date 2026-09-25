@@ -53,19 +53,15 @@ Per trial, under `jobs/<job>/<task>__<id>/`:
 
 | file | contents |
 |---|---|
-| `verifier/ctrf.json` | test report; `results.summary.passed` is the number that counts |
-| `verifier/reward.txt` | binary reward |
+| `verifier/ctrf.json` | per-test results |
+| `verifier/reward.txt` | 1 if every hidden test passed, else 0 |
 | `agent/mini-swe-agent.trajectory.json` | full trajectory, rewritten after every step |
 | `agent/mini-swe-agent.turns.jsonl` | append-only per-turn log, tailable during a run |
 | `result.json` | timings, exceptions, and token usage under `agent_result` |
 
-A task is **resolved** when `results.summary.passed >= [verifier].test_case_count` with no
-failed, skipped or other outcomes. The denominator comes from `task.toml`, not from the number
-of tests that happened to run.
-
-Check `result.json` for `exception_info` before trusting a score. A trial that raised produces
-no `ctrf.json` at all, which is different from scoring zero and should not be counted as an
-unsolved task.
+A task is **resolved** when `verifier/reward.txt` is 1. Equivalently, in `verifier/ctrf.json`,
+`results.summary.passed` equals the task's `[verifier].test_case_count` and no test failed, was
+skipped, or ended in any other state. The two checks agree.
 
 ## License
 
