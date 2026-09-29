@@ -1,0 +1,28 @@
+# Canonical list of hidden test method names (the grading denominator).
+# Any expected test with no XCTest pass (compile error / crash / timeout) is scored failed.
+# One test method per file for per-test compile isolation.
+testAnchorsAndAttributes
+testComponentControlFlowAndInterop
+testComponentEnvironmentAndText
+testComponentFormsAndMedia
+testComponentListsAndTables
+testComponentModifiersAndClasses
+testCustomNodesGroupsAndComponents
+testDocumentSkeletonAndPageAttributes
+testElementBasedComponents
+testFeedChannelMetadata
+testFeedItemsAndContent
+testFormsInputsAndControls
+testHeadLinksAndIntegrity
+testHeadMetadataExpansion
+testHeadResourcesAndSocialMetadata
+testIndentedDocumentRendering
+testInlineControlFlow
+testListsAndTables
+testMediaAndEmbeddedContent
+testPodcastChannelMetadata
+testPodcastEpisodes
+testSiteMapRendering
+testTextAndBasicElements
+testTextEscapingAndRawText
+testXMLDocumentRendering

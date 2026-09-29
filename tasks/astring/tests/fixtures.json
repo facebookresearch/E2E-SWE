@@ -1,0 +1,2489 @@
+[
+ {
+  "name": "precedence_mul_add",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "BinaryExpression",
+      "left": {
+       "type": "Identifier",
+       "name": "a"
+      },
+      "operator": "+",
+      "right": {
+       "type": "BinaryExpression",
+       "left": {
+        "type": "Identifier",
+        "name": "b"
+       },
+       "operator": "*",
+       "right": {
+        "type": "Identifier",
+        "name": "c"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "a + b * c;\n"
+ },
+ {
+  "name": "precedence_paren_add_mul",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "BinaryExpression",
+      "left": {
+       "type": "BinaryExpression",
+       "left": {
+        "type": "Identifier",
+        "name": "a"
+       },
+       "operator": "+",
+       "right": {
+        "type": "Identifier",
+        "name": "b"
+       }
+      },
+      "operator": "*",
+      "right": {
+       "type": "Identifier",
+       "name": "c"
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(a + b) * c;\n"
+ },
+ {
+  "name": "precedence_sub_nonassoc",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "BinaryExpression",
+      "left": {
+       "type": "Identifier",
+       "name": "a"
+      },
+      "operator": "-",
+      "right": {
+       "type": "BinaryExpression",
+       "left": {
+        "type": "Identifier",
+        "name": "b"
+       },
+       "operator": "-",
+       "right": {
+        "type": "Identifier",
+        "name": "c"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "a - (b - c);\n"
+ },
+ {
+  "name": "exponent_right_assoc",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "BinaryExpression",
+      "left": {
+       "type": "Identifier",
+       "name": "a"
+      },
+      "operator": "**",
+      "right": {
+       "type": "BinaryExpression",
+       "left": {
+        "type": "Identifier",
+        "name": "b"
+       },
+       "operator": "**",
+       "right": {
+        "type": "Identifier",
+        "name": "c"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "a ** b ** c;\n"
+ },
+ {
+  "name": "ternary_nested",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ConditionalExpression",
+      "test": {
+       "type": "Identifier",
+       "name": "a"
+      },
+      "consequent": {
+       "type": "Identifier",
+       "name": "b"
+      },
+      "alternate": {
+       "type": "ConditionalExpression",
+       "test": {
+        "type": "Identifier",
+        "name": "c"
+       },
+       "consequent": {
+        "type": "Identifier",
+        "name": "d"
+       },
+       "alternate": {
+        "type": "Identifier",
+        "name": "e"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "a ? b : c ? d : e;\n"
+ },
+ {
+  "name": "arrow_async_await",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ArrowFunctionExpression",
+      "id": null,
+      "expression": true,
+      "generator": false,
+      "async": true,
+      "params": [
+       {
+        "type": "Identifier",
+        "name": "x"
+       }
+      ],
+      "body": {
+       "type": "AwaitExpression",
+       "argument": {
+        "type": "Identifier",
+        "name": "x"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(async x => await x);\n"
+ },
+ {
+  "name": "template_literal",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "TemplateLiteral",
+      "expressions": [
+       {
+        "type": "BinaryExpression",
+        "left": {
+         "type": "Identifier",
+         "name": "b"
+        },
+        "operator": "+",
+        "right": {
+         "type": "Identifier",
+         "name": "c"
+        }
+       }
+      ],
+      "quasis": [
+       {
+        "type": "TemplateElement",
+        "value": {
+         "raw": "a",
+         "cooked": "a"
+        },
+        "tail": false
+       },
+       {
+        "type": "TemplateElement",
+        "value": {
+         "raw": "d",
+         "cooked": "d"
+        },
+        "tail": true
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "`a${b + c}d`;\n"
+ },
+ {
+  "name": "object_literal_mixed",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ObjectExpression",
+      "properties": [
+       {
+        "type": "Property",
+        "method": false,
+        "shorthand": true,
+        "computed": false,
+        "key": {
+         "type": "Identifier",
+         "name": "a"
+        },
+        "kind": "init",
+        "value": {
+         "type": "Identifier",
+         "name": "a"
+        }
+       },
+       {
+        "type": "Property",
+        "method": false,
+        "shorthand": false,
+        "computed": true,
+        "key": {
+         "type": "Identifier",
+         "name": "k"
+        },
+        "value": {
+         "type": "Literal",
+         "value": 1
+        },
+        "kind": "init"
+       },
+       {
+        "type": "Property",
+        "method": false,
+        "shorthand": false,
+        "computed": false,
+        "key": {
+         "type": "Literal",
+         "value": "x-y"
+        },
+        "value": {
+         "type": "Literal",
+         "value": 2
+        },
+        "kind": "init"
+       },
+       {
+        "type": "Property",
+        "method": true,
+        "shorthand": false,
+        "computed": false,
+        "key": {
+         "type": "Identifier",
+         "name": "m"
+        },
+        "kind": "init",
+        "value": {
+         "type": "FunctionExpression",
+         "id": null,
+         "expression": false,
+         "generator": false,
+         "async": false,
+         "params": [],
+         "body": {
+          "type": "BlockStatement",
+          "body": []
+         }
+        }
+       },
+       {
+        "type": "Property",
+        "method": false,
+        "shorthand": false,
+        "computed": false,
+        "key": {
+         "type": "Identifier",
+         "name": "g"
+        },
+        "kind": "get",
+        "value": {
+         "type": "FunctionExpression",
+         "id": null,
+         "expression": false,
+         "generator": false,
+         "async": false,
+         "params": [],
+         "body": {
+          "type": "BlockStatement",
+          "body": [
+           {
+            "type": "ReturnStatement",
+            "argument": {
+             "type": "Literal",
+             "value": 1
+            }
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "({\n  a,\n  [k]: 1,\n  \"x-y\": 2,\n  m() {},\n  get g() {\n    return 1;\n  }\n});\n"
+ },
+ {
+  "name": "array_holes_spread",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ArrayExpression",
+      "elements": [
+       {
+        "type": "Literal",
+        "value": 1
+       },
+       null,
+       {
+        "type": "Literal",
+        "value": 3
+       },
+       {
+        "type": "SpreadElement",
+        "argument": {
+         "type": "Identifier",
+         "name": "rest"
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "[1, , 3, ...rest];\n"
+ },
+ {
+  "name": "destructuring_rest",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "VariableDeclaration",
+     "declarations": [
+      {
+       "type": "VariableDeclarator",
+       "id": {
+        "type": "ObjectPattern",
+        "properties": [
+         {
+          "type": "Property",
+          "method": false,
+          "shorthand": true,
+          "computed": false,
+          "key": {
+           "type": "Identifier",
+           "name": "a"
+          },
+          "kind": "init",
+          "value": {
+           "type": "Identifier",
+           "name": "a"
+          }
+         },
+         {
+          "type": "Property",
+          "method": false,
+          "shorthand": false,
+          "computed": false,
+          "key": {
+           "type": "Identifier",
+           "name": "b"
+          },
+          "value": {
+           "type": "Identifier",
+           "name": "c"
+          },
+          "kind": "init"
+         },
+         {
+          "type": "RestElement",
+          "argument": {
+           "type": "Identifier",
+           "name": "r"
+          }
+         }
+        ]
+       },
+       "init": {
+        "type": "Identifier",
+        "name": "o"
+       }
+      }
+     ],
+     "kind": "const"
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "const {a, b: c, ...r} = o;\n"
+ },
+ {
+  "name": "optional_chain_nullish",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "LogicalExpression",
+      "left": {
+       "type": "ChainExpression",
+       "expression": {
+        "type": "CallExpression",
+        "callee": {
+         "type": "MemberExpression",
+         "object": {
+          "type": "MemberExpression",
+          "object": {
+           "type": "Identifier",
+           "name": "a"
+          },
+          "property": {
+           "type": "Identifier",
+           "name": "b"
+          },
+          "computed": false,
+          "optional": true
+         },
+         "property": {
+          "type": "Identifier",
+          "name": "c"
+         },
+         "computed": true,
+         "optional": true
+        },
+        "arguments": [
+         {
+          "type": "Identifier",
+          "name": "d"
+         }
+        ],
+        "optional": true
+       }
+      },
+      "operator": "??",
+      "right": {
+       "type": "Identifier",
+       "name": "e"
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "a?.b?.[c]?.(d) ?? e;\n"
+ },
+ {
+  "name": "class_features",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ClassDeclaration",
+     "id": {
+      "type": "Identifier",
+      "name": "A"
+     },
+     "superClass": {
+      "type": "Identifier",
+      "name": "B"
+     },
+     "body": {
+      "type": "ClassBody",
+      "body": [
+       {
+        "type": "PropertyDefinition",
+        "static": true,
+        "computed": false,
+        "key": {
+         "type": "Identifier",
+         "name": "x"
+        },
+        "value": {
+         "type": "Literal",
+         "value": 1
+        }
+       },
+       {
+        "type": "PropertyDefinition",
+        "static": false,
+        "computed": false,
+        "key": {
+         "type": "PrivateIdentifier",
+         "name": "p"
+        },
+        "value": {
+         "type": "Literal",
+         "value": 2
+        }
+       },
+       {
+        "type": "MethodDefinition",
+        "static": false,
+        "computed": false,
+        "key": {
+         "type": "Identifier",
+         "name": "y"
+        },
+        "kind": "get",
+        "value": {
+         "type": "FunctionExpression",
+         "id": null,
+         "expression": false,
+         "generator": false,
+         "async": false,
+         "params": [],
+         "body": {
+          "type": "BlockStatement",
+          "body": [
+           {
+            "type": "ReturnStatement",
+            "argument": {
+             "type": "MemberExpression",
+             "object": {
+              "type": "ThisExpression"
+             },
+             "property": {
+              "type": "PrivateIdentifier",
+              "name": "p"
+             },
+             "computed": false,
+             "optional": false
+            }
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "class A extends B {\n  static x = 1;\n  #p = 2;\n  get y() {\n    return this.#p;\n  }\n}\n"
+ },
+ {
+  "name": "new_member_call",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "NewExpression",
+      "callee": {
+       "type": "MemberExpression",
+       "object": {
+        "type": "CallExpression",
+        "callee": {
+         "type": "Identifier",
+         "name": "a"
+        },
+        "arguments": [],
+        "optional": false
+       },
+       "property": {
+        "type": "Identifier",
+        "name": "b"
+       },
+       "computed": false,
+       "optional": false
+      },
+      "arguments": []
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "new (a().b)();\n"
+ },
+ {
+  "name": "unary_update_mix",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "BinaryExpression",
+      "left": {
+       "type": "UnaryExpression",
+       "operator": "typeof",
+       "prefix": true,
+       "argument": {
+        "type": "UnaryExpression",
+        "operator": "-",
+        "prefix": true,
+        "argument": {
+         "type": "Identifier",
+         "name": "a"
+        }
+       }
+      },
+      "operator": "+",
+      "right": {
+       "type": "UnaryExpression",
+       "operator": "void",
+       "prefix": true,
+       "argument": {
+        "type": "UpdateExpression",
+        "operator": "++",
+        "prefix": false,
+        "argument": {
+         "type": "Identifier",
+         "name": "b"
+        }
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "typeof -a + void b++;\n"
+ },
+ {
+  "name": "logical_assignment",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "AssignmentExpression",
+      "operator": "||=",
+      "left": {
+       "type": "Identifier",
+       "name": "a"
+      },
+      "right": {
+       "type": "Identifier",
+       "name": "b"
+      }
+     }
+    },
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "AssignmentExpression",
+      "operator": "&&=",
+      "left": {
+       "type": "Identifier",
+       "name": "c"
+      },
+      "right": {
+       "type": "Identifier",
+       "name": "d"
+      }
+     }
+    },
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "AssignmentExpression",
+      "operator": "??=",
+      "left": {
+       "type": "Identifier",
+       "name": "e"
+      },
+      "right": {
+       "type": "Identifier",
+       "name": "f"
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "a ||= b;\nc &&= d;\ne ??= f;\n"
+ },
+ {
+  "name": "spread_in_call",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "CallExpression",
+      "callee": {
+       "type": "Identifier",
+       "name": "f"
+      },
+      "arguments": [
+       {
+        "type": "SpreadElement",
+        "argument": {
+         "type": "Identifier",
+         "name": "a"
+        }
+       },
+       {
+        "type": "Identifier",
+        "name": "b"
+       },
+       {
+        "type": "SpreadElement",
+        "argument": {
+         "type": "Identifier",
+         "name": "c"
+        }
+       }
+      ],
+      "optional": false
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "f(...a, b, ...c);\n"
+ },
+ {
+  "name": "regex_literal",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "VariableDeclaration",
+     "declarations": [
+      {
+       "type": "VariableDeclarator",
+       "id": {
+        "type": "Identifier",
+        "name": "r"
+       },
+       "init": {
+        "type": "Literal",
+        "value": {},
+        "regex": {
+         "pattern": "ab+c",
+         "flags": "gi"
+        }
+       }
+      }
+     ],
+     "kind": "const"
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "const r = /ab+c/gi;\n"
+ },
+ {
+  "name": "bigint_literal",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "VariableDeclaration",
+     "declarations": [
+      {
+       "type": "VariableDeclarator",
+       "id": {
+        "type": "Identifier",
+        "name": "n"
+       },
+       "init": {
+        "type": "Literal",
+        "bigint": "9007199254740993"
+       }
+      }
+     ],
+     "kind": "const"
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "const n = 9007199254740993n;\n"
+ },
+ {
+  "name": "number_formatting",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ArrayExpression",
+      "elements": [
+       {
+        "type": "Literal",
+        "value": 1e+21
+       },
+       {
+        "type": "Literal",
+        "value": 1e-7
+       },
+       {
+        "type": "Literal",
+        "value": 255
+       },
+       {
+        "type": "Literal",
+        "value": 1.5
+       },
+       {
+        "type": "Literal",
+        "value": 100
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "[1e+21, 1e-7, 255, 1.5, 100];\n"
+ },
+ {
+  "name": "for_await_of",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "FunctionDeclaration",
+     "id": {
+      "type": "Identifier",
+      "name": "h"
+     },
+     "expression": false,
+     "generator": false,
+     "async": true,
+     "params": [],
+     "body": {
+      "type": "BlockStatement",
+      "body": [
+       {
+        "type": "ForOfStatement",
+        "await": true,
+        "left": {
+         "type": "VariableDeclaration",
+         "declarations": [
+          {
+           "type": "VariableDeclarator",
+           "id": {
+            "type": "Identifier",
+            "name": "x"
+           },
+           "init": null
+          }
+         ],
+         "kind": "const"
+        },
+        "right": {
+         "type": "Identifier",
+         "name": "y"
+        },
+        "body": {
+         "type": "BlockStatement",
+         "body": []
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "async function h() {\n  for await (const x of y) {}\n}\n"
+ },
+ {
+  "name": "generator_yield",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "FunctionDeclaration",
+     "id": {
+      "type": "Identifier",
+      "name": "g"
+     },
+     "expression": false,
+     "generator": true,
+     "async": false,
+     "params": [],
+     "body": {
+      "type": "BlockStatement",
+      "body": [
+       {
+        "type": "ExpressionStatement",
+        "expression": {
+         "type": "YieldExpression",
+         "delegate": true,
+         "argument": {
+          "type": "Identifier",
+          "name": "a"
+         }
+        }
+       },
+       {
+        "type": "ExpressionStatement",
+        "expression": {
+         "type": "YieldExpression",
+         "delegate": false,
+         "argument": {
+          "type": "Identifier",
+          "name": "b"
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "function* g() {\n  yield* a;\n  yield b;\n}\n"
+ },
+ {
+  "name": "import_export",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ImportDeclaration",
+     "specifiers": [
+      {
+       "type": "ImportDefaultSpecifier",
+       "local": {
+        "type": "Identifier",
+        "name": "d"
+       }
+      },
+      {
+       "type": "ImportSpecifier",
+       "imported": {
+        "type": "Identifier",
+        "name": "a"
+       },
+       "local": {
+        "type": "Identifier",
+        "name": "b"
+       }
+      }
+     ],
+     "source": {
+      "type": "Literal",
+      "value": "m"
+     }
+    },
+    {
+     "type": "ExportNamedDeclaration",
+     "declaration": null,
+     "specifiers": [
+      {
+       "type": "ExportSpecifier",
+       "local": {
+        "type": "Identifier",
+        "name": "b"
+       },
+       "exported": {
+        "type": "Identifier",
+        "name": "y"
+       }
+      }
+     ],
+     "source": null
+    },
+    {
+     "type": "ExportDefaultDeclaration",
+     "declaration": {
+      "type": "Identifier",
+      "name": "z"
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "import d, {a as b} from \"m\";\nexport {b as y};\nexport default z;\n"
+ },
+ {
+  "name": "iife",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "CallExpression",
+      "callee": {
+       "type": "FunctionExpression",
+       "id": null,
+       "expression": false,
+       "generator": false,
+       "async": false,
+       "params": [],
+       "body": {
+        "type": "BlockStatement",
+        "body": []
+       }
+      },
+      "arguments": [],
+      "optional": false
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(function () {})();\n"
+ },
+ {
+  "name": "string_escaping",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "VariableDeclaration",
+     "declarations": [
+      {
+       "type": "VariableDeclarator",
+       "id": {
+        "type": "Identifier",
+        "name": "s"
+       },
+       "init": {
+        "type": "Literal",
+        "value": "It's a \"q\" \n line"
+       }
+      }
+     ],
+     "kind": "const"
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "const s = \"It's a \\\"q\\\" \\n line\";\n"
+ },
+ {
+  "name": "comma_sequence_arg",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "CallExpression",
+      "callee": {
+       "type": "Identifier",
+       "name": "f"
+      },
+      "arguments": [
+       {
+        "type": "SequenceExpression",
+        "expressions": [
+         {
+          "type": "Identifier",
+          "name": "a"
+         },
+         {
+          "type": "Identifier",
+          "name": "b"
+         }
+        ]
+       }
+      ],
+      "optional": false
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "f((a, b));\n"
+ },
+ {
+  "name": "arrow_async_block",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ArrowFunctionExpression",
+      "id": null,
+      "expression": false,
+      "generator": false,
+      "async": true,
+      "params": [
+       {
+        "type": "Identifier",
+        "name": "a"
+       },
+       {
+        "type": "Identifier",
+        "name": "b"
+       }
+      ],
+      "body": {
+       "type": "BlockStatement",
+       "body": [
+        {
+         "type": "ReturnStatement",
+         "argument": {
+          "type": "Identifier",
+          "name": "a"
+         }
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(async (a, b) => {\n  return a;\n});\n"
+ },
+ {
+  "name": "arrow_default_param",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ArrowFunctionExpression",
+      "id": null,
+      "expression": true,
+      "generator": false,
+      "async": false,
+      "params": [
+       {
+        "type": "AssignmentPattern",
+        "left": {
+         "type": "Identifier",
+         "name": "a"
+        },
+        "right": {
+         "type": "Literal",
+         "value": 1
+        }
+       }
+      ],
+      "body": {
+       "type": "Identifier",
+       "name": "a"
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "((a = 1) => a);\n"
+ },
+ {
+  "name": "arrow_return_nested_object",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ArrowFunctionExpression",
+      "id": null,
+      "expression": true,
+      "generator": false,
+      "async": false,
+      "params": [],
+      "body": {
+       "type": "ObjectExpression",
+       "properties": [
+        {
+         "type": "Property",
+         "method": false,
+         "shorthand": false,
+         "computed": false,
+         "key": {
+          "type": "Identifier",
+          "name": "a"
+         },
+         "value": {
+          "type": "ObjectExpression",
+          "properties": [
+           {
+            "type": "Property",
+            "method": false,
+            "shorthand": false,
+            "computed": false,
+            "key": {
+             "type": "Identifier",
+             "name": "b"
+            },
+            "value": {
+             "type": "Literal",
+             "value": 1
+            },
+            "kind": "init"
+           }
+          ]
+         },
+         "kind": "init"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(() => ({\n  a: {\n    b: 1\n  }\n}));\n"
+ },
+ {
+  "name": "arrow_concise_conditional",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ArrowFunctionExpression",
+      "id": null,
+      "expression": true,
+      "generator": false,
+      "async": false,
+      "params": [
+       {
+        "type": "Identifier",
+        "name": "x"
+       }
+      ],
+      "body": {
+       "type": "ConditionalExpression",
+       "test": {
+        "type": "Identifier",
+        "name": "x"
+       },
+       "consequent": {
+        "type": "Identifier",
+        "name": "a"
+       },
+       "alternate": {
+        "type": "Identifier",
+        "name": "b"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(x => x ? a : b);\n"
+ },
+ {
+  "name": "func_expr_statement",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "FunctionExpression",
+      "id": {
+       "type": "Identifier",
+       "name": "foo"
+      },
+      "expression": false,
+      "generator": false,
+      "async": false,
+      "params": [],
+      "body": {
+       "type": "BlockStatement",
+       "body": [
+        {
+         "type": "ReturnStatement",
+         "argument": {
+          "type": "Literal",
+          "value": 1
+         }
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(function foo() {\n  return 1;\n});\n"
+ },
+ {
+  "name": "class_expr_statement",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ClassExpression",
+      "id": null,
+      "superClass": {
+       "type": "Identifier",
+       "name": "B"
+      },
+      "body": {
+       "type": "ClassBody",
+       "body": [
+        {
+         "type": "MethodDefinition",
+         "static": false,
+         "computed": false,
+         "key": {
+          "type": "Identifier",
+          "name": "m"
+         },
+         "kind": "method",
+         "value": {
+          "type": "FunctionExpression",
+          "id": null,
+          "expression": false,
+          "generator": false,
+          "async": false,
+          "params": [],
+          "body": {
+           "type": "BlockStatement",
+           "body": []
+          }
+         }
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(class extends B {\n  m() {}\n});\n"
+ },
+ {
+  "name": "object_empty",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ObjectExpression",
+      "properties": []
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "({});\n"
+ },
+ {
+  "name": "iife_arrow",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "CallExpression",
+      "callee": {
+       "type": "ArrowFunctionExpression",
+       "id": null,
+       "expression": true,
+       "generator": false,
+       "async": false,
+       "params": [],
+       "body": {
+        "type": "Literal",
+        "value": 1
+       }
+      },
+      "arguments": [],
+      "optional": false
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(() => 1)();\n"
+ },
+ {
+  "name": "sequence_arrow_body",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ArrowFunctionExpression",
+      "id": null,
+      "expression": true,
+      "generator": false,
+      "async": false,
+      "params": [],
+      "body": {
+       "type": "SequenceExpression",
+       "expressions": [
+        {
+         "type": "Identifier",
+         "name": "a"
+        },
+        {
+         "type": "Identifier",
+         "name": "b"
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(() => (a, b));\n"
+ },
+ {
+  "name": "await_binary_precedence",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ArrowFunctionExpression",
+      "id": null,
+      "expression": true,
+      "generator": false,
+      "async": true,
+      "params": [],
+      "body": {
+       "type": "BinaryExpression",
+       "left": {
+        "type": "AwaitExpression",
+        "argument": {
+         "type": "Identifier",
+         "name": "a"
+        }
+       },
+       "operator": "+",
+       "right": {
+        "type": "Identifier",
+        "name": "b"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(async () => await a + b);\n"
+ },
+ {
+  "name": "exponent_unary_left",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "BinaryExpression",
+      "left": {
+       "type": "UnaryExpression",
+       "operator": "-",
+       "prefix": true,
+       "argument": {
+        "type": "Identifier",
+        "name": "a"
+       }
+      },
+      "operator": "**",
+      "right": {
+       "type": "Identifier",
+       "name": "b"
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(-a) ** b;\n"
+ },
+ {
+  "name": "assignment_as_arg",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "CallExpression",
+      "callee": {
+       "type": "Identifier",
+       "name": "f"
+      },
+      "arguments": [
+       {
+        "type": "AssignmentExpression",
+        "operator": "=",
+        "left": {
+         "type": "Identifier",
+         "name": "a"
+        },
+        "right": {
+         "type": "Literal",
+         "value": 1
+        }
+       }
+      ],
+      "optional": false
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "f(a = 1);\n"
+ },
+ {
+  "name": "conditional_member_assign",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "AssignmentExpression",
+      "operator": "=",
+      "left": {
+       "type": "MemberExpression",
+       "object": {
+        "type": "ConditionalExpression",
+        "test": {
+         "type": "Identifier",
+         "name": "a"
+        },
+        "consequent": {
+         "type": "Identifier",
+         "name": "b"
+        },
+        "alternate": {
+         "type": "Identifier",
+         "name": "c"
+        }
+       },
+       "property": {
+        "type": "Identifier",
+        "name": "d"
+       },
+       "computed": false,
+       "optional": false
+      },
+      "right": {
+       "type": "Literal",
+       "value": 1
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(a ? b : c).d = 1;\n"
+ },
+ {
+  "name": "tagged_template",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "TaggedTemplateExpression",
+      "tag": {
+       "type": "Identifier",
+       "name": "tag"
+      },
+      "quasi": {
+       "type": "TemplateLiteral",
+       "expressions": [
+        {
+         "type": "Identifier",
+         "name": "y"
+        }
+       ],
+       "quasis": [
+        {
+         "type": "TemplateElement",
+         "value": {
+          "raw": "x",
+          "cooked": "x"
+         },
+         "tail": false
+        },
+        {
+         "type": "TemplateElement",
+         "value": {
+          "raw": "z",
+          "cooked": "z"
+         },
+         "tail": true
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "tag`x${y}z`;\n"
+ },
+ {
+  "name": "getter_setter_object",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "ObjectExpression",
+      "properties": [
+       {
+        "type": "Property",
+        "method": false,
+        "shorthand": false,
+        "computed": false,
+        "key": {
+         "type": "Identifier",
+         "name": "x"
+        },
+        "kind": "get",
+        "value": {
+         "type": "FunctionExpression",
+         "id": null,
+         "expression": false,
+         "generator": false,
+         "async": false,
+         "params": [],
+         "body": {
+          "type": "BlockStatement",
+          "body": [
+           {
+            "type": "ReturnStatement",
+            "argument": {
+             "type": "Literal",
+             "value": 1
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "type": "Property",
+        "method": false,
+        "shorthand": false,
+        "computed": false,
+        "key": {
+         "type": "Identifier",
+         "name": "x"
+        },
+        "kind": "set",
+        "value": {
+         "type": "FunctionExpression",
+         "id": null,
+         "expression": false,
+         "generator": false,
+         "async": false,
+         "params": [
+          {
+           "type": "Identifier",
+           "name": "v"
+          }
+         ],
+         "body": {
+          "type": "BlockStatement",
+          "body": []
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "({\n  get x() {\n    return 1;\n  },\n  set x(v) {}\n});\n"
+ },
+ {
+  "name": "class_static_block",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ClassDeclaration",
+     "id": {
+      "type": "Identifier",
+      "name": "A"
+     },
+     "superClass": null,
+     "body": {
+      "type": "ClassBody",
+      "body": [
+       {
+        "type": "StaticBlock",
+        "body": [
+         {
+          "type": "ExpressionStatement",
+          "expression": {
+           "type": "AssignmentExpression",
+           "operator": "=",
+           "left": {
+            "type": "Identifier",
+            "name": "x"
+           },
+           "right": {
+            "type": "Literal",
+            "value": 1
+           }
+          }
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "class A {\n  static {\n    x = 1;\n  }\n}\n"
+ },
+ {
+  "name": "ta_neg_neg",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "UnaryExpression",
+      "operator": "-",
+      "prefix": true,
+      "argument": {
+       "type": "UnaryExpression",
+       "operator": "-",
+       "prefix": true,
+       "argument": {
+        "type": "Identifier",
+        "name": "a"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "- -a;\n"
+ },
+ {
+  "name": "ta_neg_pre",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "UnaryExpression",
+      "operator": "-",
+      "prefix": true,
+      "argument": {
+       "type": "UpdateExpression",
+       "operator": "--",
+       "prefix": true,
+       "argument": {
+        "type": "Identifier",
+        "name": "a"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "- --a;\n"
+ },
+ {
+  "name": "ta_pos_pos",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "UnaryExpression",
+      "operator": "+",
+      "prefix": true,
+      "argument": {
+       "type": "UnaryExpression",
+       "operator": "+",
+       "prefix": true,
+       "argument": {
+        "type": "Identifier",
+        "name": "a"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "+ +a;\n"
+ },
+ {
+  "name": "ta_pos_pre",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "UnaryExpression",
+      "operator": "+",
+      "prefix": true,
+      "argument": {
+       "type": "UpdateExpression",
+       "operator": "++",
+       "prefix": true,
+       "argument": {
+        "type": "Identifier",
+        "name": "a"
+       }
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "+ ++a;\n"
+ },
+ {
+  "name": "nm_or_paren_nul",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "LogicalExpression",
+      "left": {
+       "type": "LogicalExpression",
+       "left": {
+        "type": "Identifier",
+        "name": "a"
+       },
+       "operator": "||",
+       "right": {
+        "type": "Identifier",
+        "name": "b"
+       }
+      },
+      "operator": "??",
+      "right": {
+       "type": "Identifier",
+       "name": "c"
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(a || b) ?? c;\n"
+ },
+ {
+  "name": "nm_and_paren_nul",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "LogicalExpression",
+      "left": {
+       "type": "LogicalExpression",
+       "left": {
+        "type": "Identifier",
+        "name": "a"
+       },
+       "operator": "&&",
+       "right": {
+        "type": "Identifier",
+        "name": "b"
+       }
+      },
+      "operator": "??",
+      "right": {
+       "type": "Identifier",
+       "name": "c"
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(a && b) ?? c;\n"
+ },
+ {
+  "name": "nm_nested",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "LogicalExpression",
+      "left": {
+       "type": "LogicalExpression",
+       "left": {
+        "type": "LogicalExpression",
+        "left": {
+         "type": "Identifier",
+         "name": "a"
+        },
+        "operator": "??",
+        "right": {
+         "type": "Identifier",
+         "name": "b"
+        }
+       },
+       "operator": "||",
+       "right": {
+        "type": "Identifier",
+        "name": "c"
+       }
+      },
+      "operator": "&&",
+      "right": {
+       "type": "Identifier",
+       "name": "d"
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "((a ?? b) || c) && d;\n"
+ },
+ {
+  "name": "nc_new_call",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "NewExpression",
+      "callee": {
+       "type": "CallExpression",
+       "callee": {
+        "type": "Identifier",
+        "name": "a"
+       },
+       "arguments": [],
+       "optional": false
+      },
+      "arguments": []
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "new (a())();\n"
+ },
+ {
+  "name": "ms_cond_call",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ExpressionStatement",
+     "expression": {
+      "type": "CallExpression",
+      "callee": {
+       "type": "ConditionalExpression",
+       "test": {
+        "type": "Identifier",
+        "name": "a"
+       },
+       "consequent": {
+        "type": "Identifier",
+        "name": "b"
+       },
+       "alternate": {
+        "type": "Identifier",
+        "name": "c"
+       }
+      },
+      "arguments": [],
+      "optional": false
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "(a ? b : c)();\n"
+ },
+ {
+  "name": "if_else_chain",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "IfStatement",
+     "test": {
+      "type": "Identifier",
+      "name": "a"
+     },
+     "consequent": {
+      "type": "BlockStatement",
+      "body": [
+       {
+        "type": "ExpressionStatement",
+        "expression": {
+         "type": "CallExpression",
+         "callee": {
+          "type": "Identifier",
+          "name": "f"
+         },
+         "arguments": [],
+         "optional": false
+        }
+       }
+      ]
+     },
+     "alternate": {
+      "type": "IfStatement",
+      "test": {
+       "type": "Identifier",
+       "name": "b"
+      },
+      "consequent": {
+       "type": "BlockStatement",
+       "body": [
+        {
+         "type": "ExpressionStatement",
+         "expression": {
+          "type": "CallExpression",
+          "callee": {
+           "type": "Identifier",
+           "name": "g"
+          },
+          "arguments": [],
+          "optional": false
+         }
+        }
+       ]
+      },
+      "alternate": {
+       "type": "BlockStatement",
+       "body": [
+        {
+         "type": "ExpressionStatement",
+         "expression": {
+          "type": "CallExpression",
+          "callee": {
+           "type": "Identifier",
+           "name": "h"
+          },
+          "arguments": [],
+          "optional": false
+         }
+        }
+       ]
+      }
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "if (a) {\n  f();\n} else if (b) {\n  g();\n} else {\n  h();\n}\n"
+ },
+ {
+  "name": "for_statement",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ForStatement",
+     "init": {
+      "type": "VariableDeclaration",
+      "kind": "let",
+      "declarations": [
+       {
+        "type": "VariableDeclarator",
+        "id": {
+         "type": "Identifier",
+         "name": "i"
+        },
+        "init": {
+         "type": "Literal",
+         "value": 0
+        }
+       }
+      ]
+     },
+     "test": {
+      "type": "BinaryExpression",
+      "left": {
+       "type": "Identifier",
+       "name": "i"
+      },
+      "operator": "<",
+      "right": {
+       "type": "Identifier",
+       "name": "n"
+      }
+     },
+     "update": {
+      "type": "UpdateExpression",
+      "operator": "++",
+      "prefix": false,
+      "argument": {
+       "type": "Identifier",
+       "name": "i"
+      }
+     },
+     "body": {
+      "type": "BlockStatement",
+      "body": [
+       {
+        "type": "ExpressionStatement",
+        "expression": {
+         "type": "CallExpression",
+         "callee": {
+          "type": "Identifier",
+          "name": "f"
+         },
+         "arguments": [
+          {
+           "type": "Identifier",
+           "name": "i"
+          }
+         ],
+         "optional": false
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "for (let i = 0; i < n; i++) {\n  f(i);\n}\n"
+ },
+ {
+  "name": "for_empty",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ForStatement",
+     "init": null,
+     "test": null,
+     "update": null,
+     "body": {
+      "type": "BlockStatement",
+      "body": []
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "for (; ; ) {}\n"
+ },
+ {
+  "name": "while_statement",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "WhileStatement",
+     "test": {
+      "type": "Identifier",
+      "name": "a"
+     },
+     "body": {
+      "type": "BlockStatement",
+      "body": [
+       {
+        "type": "ExpressionStatement",
+        "expression": {
+         "type": "CallExpression",
+         "callee": {
+          "type": "Identifier",
+          "name": "f"
+         },
+         "arguments": [],
+         "optional": false
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "while (a) {\n  f();\n}\n"
+ },
+ {
+  "name": "do_while_statement",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "DoWhileStatement",
+     "body": {
+      "type": "BlockStatement",
+      "body": [
+       {
+        "type": "ExpressionStatement",
+        "expression": {
+         "type": "CallExpression",
+         "callee": {
+          "type": "Identifier",
+          "name": "f"
+         },
+         "arguments": [],
+         "optional": false
+        }
+       }
+      ]
+     },
+     "test": {
+      "type": "Identifier",
+      "name": "a"
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "do {\n  f();\n} while (a);\n"
+ },
+ {
+  "name": "for_in_statement",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "ForInStatement",
+     "left": {
+      "type": "VariableDeclaration",
+      "kind": "const",
+      "declarations": [
+       {
+        "type": "VariableDeclarator",
+        "id": {
+         "type": "Identifier",
+         "name": "k"
+        },
+        "init": null
+       }
+      ]
+     },
+     "right": {
+      "type": "Identifier",
+      "name": "o"
+     },
+     "body": {
+      "type": "BlockStatement",
+      "body": [
+       {
+        "type": "ExpressionStatement",
+        "expression": {
+         "type": "CallExpression",
+         "callee": {
+          "type": "Identifier",
+          "name": "f"
+         },
+         "arguments": [
+          {
+           "type": "Identifier",
+           "name": "k"
+          }
+         ],
+         "optional": false
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "for (const k in o) {\n  f(k);\n}\n"
+ },
+ {
+  "name": "switch_statement",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "SwitchStatement",
+     "discriminant": {
+      "type": "Identifier",
+      "name": "x"
+     },
+     "cases": [
+      {
+       "type": "SwitchCase",
+       "test": {
+        "type": "Literal",
+        "value": 1
+       },
+       "consequent": [
+        {
+         "type": "ExpressionStatement",
+         "expression": {
+          "type": "CallExpression",
+          "callee": {
+           "type": "Identifier",
+           "name": "a"
+          },
+          "arguments": [],
+          "optional": false
+         }
+        },
+        {
+         "type": "BreakStatement",
+         "label": null
+        }
+       ]
+      },
+      {
+       "type": "SwitchCase",
+       "test": null,
+       "consequent": [
+        {
+         "type": "ExpressionStatement",
+         "expression": {
+          "type": "CallExpression",
+          "callee": {
+           "type": "Identifier",
+           "name": "b"
+          },
+          "arguments": [],
+          "optional": false
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "switch (x) {\n  case 1:\n    a();\n    break;\n  default:\n    b();\n}\n"
+ },
+ {
+  "name": "try_catch_finally",
+  "ast": {
+   "type": "Program",
+   "body": [
+    {
+     "type": "TryStatement",
+     "block": {
+      "type": "BlockStatement",
+      "body": [
+       {
+        "type": "ExpressionStatement",
+        "expression": {
+         "type": "CallExpression",
+         "callee": {
+          "type": "Identifier",
+          "name": "risky"
+         },
+         "arguments": [],
+         "optional": false
+        }
+       }
+      ]
+     },
+     "handler": {
+      "type": "CatchClause",
+      "param": {
+       "type": "Identifier",
+       "name": "e"
+      },
+      "body": {
+       "type": "BlockStatement",
+       "body": [
+        {
+         "type": "ThrowStatement",
+         "argument": {
+          "type": "Identifier",
+          "name": "e"
+         }
+        }
+       ]
+      }
+     },
+     "finalizer": {
+      "type": "BlockStatement",
+      "body": [
+       {
+        "type": "ExpressionStatement",
+        "expression": {
+         "type": "CallExpression",
+         "callee": {
+          "type": "Identifier",
+          "name": "cleanup"
+         },
+         "arguments": [],
+         "optional": false
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "sourceType": "module"
+  },
+  "expected": "try {\n  risky();\n} catch (e) {\n  throw e;\n} finally {\n  cleanup();\n}\n"
+ }
+]

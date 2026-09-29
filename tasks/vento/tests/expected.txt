@@ -1,0 +1,68 @@
+print: nullish coalescing default
+print: undeclared variable renders empty
+print: trim markers on both sides
+print: decrement expression with left trim
+filter: method toUpperCase
+filter: chained toString then toUpperCase on number
+filter: chained methods on undefined
+filter: custom registered slugify
+escape: HTML entities
+escape: JSON.stringify then escape
+unescape: named entities
+safe: overrides autoescape
+empty: NaN is empty
+empty: negated whitespace-only string
+empty: Date is not empty
+for: number with key var
+for: object with key var
+for: destructured object props
+for: nested array destructuring
+for: source with pipe filter
+for: source with inline method filter
+for: classic C-style loop
+for: continue
+if: else-if chain
+if: condition with pipe filter
+if: multiline condition
+set: block capture
+set: value with pipe join
+set: destructuring with rest
+set: nested object destructuring
+function: default parameter
+function: hoisting
+function: scope isolation of nested declarations
+function: autoescape and safe interplay
+import: aliased export and import
+include: basic
+include: relative nested with filters
+include: with custom inline data
+include: object shorthand data
+include: front matter data
+layout: basic content
+layout: nested layouts
+layout: with filter on rendered output
+layout: named slots
+layout: same-named slots with filters concatenate
+echo: block preserves inner tags literally
+echo: block with filter
+echo: trim markers
+comment: trims both sides
+js: object spread piped to JSON.stringify
+default: sets only undefined values
+strict: throws on undefined variable
+autoDataVarname false throws on bare identifier
+include: infinite nesting rejects
+filter: array method chain then registered filter
+filter: async registered getAsync
+escape: number passes through unchanged
+filter: block capture with toUpperCase
+layout: outer filter over inner content filter
+layout: extra data object with filter
+layout: autoescape filter escapes rendered content
+layout: same-named greeting slots wrap element
+layout: slot filter over nested echo filter
+function: async function tag with await
+function: parameter reassignment stays local
+function: export scope isolation hides const
+function: autoescape false leaves safe and raw intact
+function: return value not string under autoescape

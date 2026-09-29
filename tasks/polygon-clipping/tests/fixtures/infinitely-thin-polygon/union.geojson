@@ -1,0 +1,18 @@
+{
+  "type": "Feature",
+  "properties": {},
+  "geometry": {
+    "type": "MultiPolygon",
+    "coordinates": [
+      [
+        [
+          [-3, -3],
+          [3, -3],
+          [3, 3],
+          [-3, 3],
+          [-3, -3]
+        ]
+      ]
+    ]
+  }
+}

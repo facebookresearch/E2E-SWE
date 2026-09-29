@@ -1,0 +1,36 @@
+{
+  "realm": "settings-realm",
+  "registrationAllowed": true,
+  "verifyEmail": true,
+  "bruteForceProtected": true,
+  "revokeRefreshToken": true,
+  "refreshTokenMaxReuse": 3,
+  "accessTokenLifespan": 3600,
+  "offlineSessionMaxLifespanEnabled": true,
+  "keycloakVersion": "999.0.0",
+  "passwordPolicy": "hashAlgorithm(pbkdf2-sha256) and hashIterations(1000)",
+  "attributes": {},
+  "components": {},
+  "clients": [],
+  "roles": {
+    "realm": [],
+    "client": {}
+  },
+  "identityProviders": [],
+  "identityProviderMappers": [],
+  "clientScopes": [
+    {
+      "name": "custom-scope",
+      "protocolMappers": [
+        {
+          "name": "ssn-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "config": {
+            "user.attribute": "ssn"
+          }
+        }
+      ]
+    }
+  ]
+}

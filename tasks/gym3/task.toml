@@ -1,0 +1,23 @@
+version = "1.0"
+
+artifacts = ["/app"]
+
+[metadata]
+category = "numeric-and-scientific"
+programming_language = "Python"
+
+[verifier]
+environment_mode = "separate"
+network_mode = "no-network"
+timeout_sec = 900.0
+test_case_count = 10
+
+[agent]
+timeout_sec = 14400.0
+
+[environment]
+docker_image = "ghcr.io/facebookresearch/e2e-swe:gym3"
+cpus = 6
+memory_mb = 8192
+storage_mb = 51200
+allow_internet = false

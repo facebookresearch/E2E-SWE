@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Sample RSS Feed</title>
+    <description>An RSS feed used for reader tests.</description>
+    <link>http://example.com/</link>
+    <pubDate>Mon, 06 Sep 2010 00:01:00 +0000</pubDate>
+
+    <item>
+        <title>Hello World</title>
+        <description>First entry summary.</description>
+        <link>http://example.com/posts/1</link>
+        <guid isPermaLink="false">rss-entry-1</guid>
+        <pubDate>Sun, 06 Sep 2009 16:20:00 +0000</pubDate>
+        <enclosure url="http://example.com/audio/1.mp3" type="audio/mpeg" length="12345" />
+    </item>
+    <item>
+        <title>Second Post</title>
+        <description>Second entry summary.</description>
+        <link>http://example.com/posts/2</link>
+        <guid isPermaLink="false">rss-entry-2</guid>
+        <pubDate>Mon, 07 Sep 2009 12:00:00 +0000</pubDate>
+    </item>
+    <item>
+        <title>Third Post About Cats</title>
+        <description>Cats are wonderful animals.</description>
+        <link>http://example.com/posts/3</link>
+        <guid isPermaLink="false">rss-entry-3</guid>
+        <pubDate>Tue, 08 Sep 2009 09:30:00 +0000</pubDate>
+    </item>
+</channel>
+</rss>

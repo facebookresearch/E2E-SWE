@@ -1,0 +1,186 @@
+vec_algebra	dot=11.000000 cross=-2.000000 mag=5.000000 dist=5.000000 dir=0.785398 ang=1.570796
+vec_ortho	left=(0.000000,-1.000000) right=(0.000000,1.000000)
+vec_vectorops	norm=(0.600000,0.800000) proj=(2.000000,0.000000) rot=(0.000000,1.000000) lerp=(1.000000,2.000000) triple=(0.000000,1.000000)
+xf_transform	p=(1.000000,3.000000) ang=1.570796
+xf_inverse_roundtrip	(5.000000,7.000000)
+mass_circle	m=3.141593 I=1.570796 c=(0.000000,0.000000)
+mass_rectangle	m=2.000000 I=0.833333 c=(0.000000,0.000000)
+mass_square	m=8.000000 I=5.333333 c=(0.000000,0.000000)
+mass_triangle	m=0.577350 I=0.064150 c=(0.000000,0.000000)
+area_shapes	rect=6.000000 circle=12.566371
+aabb_rect_rot45	w=2.828427 h=2.828427
+aabb_accessors	cw=3.000000 ch=3.000000 cc=(0.000000,0.000000) uminx=-1.000000 umaxx=4.000000 overlaps_near=true overlaps_far=false ixminx=0.500000 ixmaxx=1.000000
+area_weighted_center	(1.000000,1.000000)
+col_sat_cc_overlap	hit depth=0.500000 n=(1.000,0.000)
+col_sat_cc_separated	miss
+col_sat_rect_overlap	hit depth=0.500000 n=(1.000000,0.000000)
+col_sat_rect_separated	miss
+col_sat_rect_diag_overlap	hit depth=0.400000 n=(0.000000,1.000000)
+col_sat_circle_poly	hit depth=0.200000 n=(1.000000,0.000000)
+col_sat_tri_tri	hit depth=0.353553 n=(0.707107,0.707107)
+col_gjk_cc_overlap	hit depth=0.500000 n=(1.000,0.000)
+col_gjk_cc_separated	miss
+col_gjk_rect_overlap	hit depth=0.500000 n=(1.000000,0.000000)
+col_gjk_circle_poly	hit depth=0.200000 n=(1.000000,0.000000)
+col_gjk_detect_bool	overlap=true separated=false
+col_gjk_dist_cc	sep d=2.000000 n=(1.000000,0.000000) p1=(1.000000,0.000000) p2=(3.000000,0.000000)
+col_gjk_dist_rect	sep d=2.000000 n=(1.000000,0.000000)
+col_gjk_dist_overlap	overlap
+col_gjk_dist_diag	sep d=3.000000 n=(0.600000,0.800000) p1=(0.600000,0.800000) p2=(2.400000,3.200000)
+col_circledet_pen	hit depth=0.500000 n=(1.000000,0.000000)
+col_circledet_dist	sep d=2.000000 n=(1.000000,0.000000) p1=(1.000000,0.000000) p2=(3.000000,0.000000)
+col_circledet_contains	b_in_a=true a_in_b=false
+col_ray_circle_hit	hit t=6.000000 p=(1.000000,0.000000) n=(-1.000000,0.000000)
+col_ray_circle_miss	miss
+col_ray_circledet_hit	hit t=6.000000 p=(0.000000,1.000000) n=(0.000000,-1.000000)
+col_ray_rect_hit	hit t=7.000000 p=(2.000000,0.000000) n=(-1.000000,0.000000)
+col_ray_maxlen_short	miss
+col_ray_segment_hit	hit t=7.000000 p=(2.000000,0.000000) n=(-1.000000,0.000000)
+col_manifold_rect_face	pts=2 |n|=1.000000 axis=(1.000000,0.000000) d=[0.500000,0.500000] t=[-1.000000,1.000000]
+col_manifold_rect_vertical	pts=2 |n|=1.000000 axis=(0.000000,1.000000) d=[0.500000,0.500000] t=[-1.000000,1.000000]
+col_toi_moving_hits	collides=true t=0.166667
+col_toi_moving_misses	collides=false
+col_toi_rect_moving	collides=true t=0.300000
+col_epa_rot_poly_depth45	hit depth=0.914214 n=(1.000000,0.000000)
+col_epa_rot_poly_depth30	hit depth=0.766025 n=(1.000000,0.000000)
+col_epa_rot_tri_depth	hit depth=0.671071 n=(0.707107,0.707107)
+col_epa_deep_circle_poly	hit depth=1.700000 n=(-1.000000,0.000000)
+col_gjk_dist_rot_nearmiss	sep d=0.585786 n=(1.000000,0.000000) p1=(1.000000,0.000000) p2=(1.585786,0.000000)
+col_gjk_dist_rot_offset	sep d=0.867680 n=(0.809017,0.587785) p1=(1.000000,1.000000) p2=(1.701968,1.510010)
+col_gjk_dist_tri_nearmiss	sep d=1.340153 n=(0.707107,0.707107)
+col_manifold_vertexface_pts	pts=1 |n|=1.000000 axis=(1.000000,0.000000) d=[0.214214] t=[0.000000]
+col_sat_oblique_axis	hit depth=0.500000 n=(0.000000,1.000000)
+col_sat_oblique_wide	hit depth=0.300000 n=(0.000000,1.000000)
+col_gjk_dist_circle_rect	sep d=2.000000 n=(1.000000,0.000000) p1=(1.000000,0.000000) p2=(3.000000,0.000000)
+col_gjk_dist_tri_rect	sep d=1.833636 n=(0.999835,0.018179) p1=(0.666667,-0.333333) p2=(2.500000,-0.300000)
+col_gjk_dist_rot_square2	sep d=0.833975 n=(1.000000,0.000000) p1=(1.000000,0.766025) p2=(1.833975,0.766025)
+col_gjk_dist_diag_rects	sep d=1.414214 n=(0.707107,0.707107) p1=(1.000000,1.000000) p2=(2.000000,2.000000)
+col_manifold_faceface_wide	pts=2 |n|=1.000000 axis=(0.000000,1.000000) d=[0.500000,0.500000] t=[-2.000000,1.400000]
+col_manifold_tri_rect	pts_1_2=true depths_nonneg=true |n|=1.000000 axis=(0.707107,0.707107) maxDepth=1.037090
+col_manifold_rot30_pts	pts=1 |n|=1.000000 axis=(1.000000,0.000000) d=[0.466025] t=[0.566025]
+col_toi_tunnel	collides=true t=0.466667
+col_manifold_deep_faceface	pts=2 |n|=1.000000 axis=(1.000000,0.000000) d=[1.600000,1.600000] t=[-1.000000,1.000000]
+col_manifold_tri_tri	pts=1 |n|=1.000000 axis=(0.707107,0.707107) d=[0.777817] t=[-0.212132]
+col_toi_box_tunnel	collides=true t=0.475000
+dyn_body_mass_square	m=12.000000 I=8.000000 c=(0.000000,0.000000)
+dyn_body_mass_circle	m=6.283185 I=3.141593 c=(0.000000,0.000000)
+dyn_body_mass_infinite	m=0.000000 I=0.000000
+dyn_body_mass_fixed_linear	m=0.000000 I=2.666667
+dyn_body_mass_two_fixtures	m=2.000000 I=2.333333 c=(1.000000,0.000000)
+dyn_body_accum_force	(4.000000,-3.000000)
+dyn_body_accum_torque	3.000000
+dyn_body_force_at_point	F=(0.000000,5.000000) T=5.000000
+dyn_body_impulse_linear	(2.000000,-1.000000)
+dyn_body_impulse_angular	2.000000
+dyn_body_integrate_force_1step	(0.016667,0.000000)
+dyn_world_freefall_velocity	(0.000000,-1.633333)
+dyn_world_freefall_position	(0.000000,3.734167)
+dyn_world_no_gravity_static	(2.000000,3.000000)
+dyn_world_ballistic_zero_g	(2.000000,0.000000)
+dyn_world_rest_on_floor	y=1.0
+dyn_world_rest_velocity_zero	vy=0.00
+dyn_world_elastic_bounce_up	true
+dyn_world_inelastic_common_velocity	a_vx=0.00 b_vx=0.00
+dyn_world_collision_separates	true
+dyn_world_gravity_default	default=(0.000000,-9.800000) set=(1.000000,-3.500000)
+dyn_joint_distance_invariant	d=2.0 rest=2.000000
+dyn_joint_distance_rest	5.000000
+dyn_joint_revolute_coincident	gap=0.00
+dyn_joint_weld_locks	gap=0.00 dAngle=0.00
+dyn_joint_prismatic_axis	x=0.00
+dyn_joint_pin_target	target=(0.000000,5.000000) held=true
+dyn_joint_angle_ratio	ratio=1.000000 locked=true
+dyn_joint_revolute_pendulum	pivotFixed=true rodDropped=true
+hull_square_agree	n=4 [(0.000000,0.000000),(0.000000,2.000000),(2.000000,0.000000),(2.000000,2.000000)]
+hull_collinear_agree	n=4 [(0.000000,0.000000),(0.000000,2.000000),(2.000000,0.000000),(2.000000,2.000000)]
+hull_triangle_interior_agree	n=3 [(0.000000,0.000000),(2.000000,3.000000),(4.000000,0.000000)]
+hull_cloud10_agree	n=6 [(-3.000000,1.000000),(-2.000000,3.000000),(0.000000,-2.000000),(2.000000,5.000000),(4.000000,4.000000),(5.000000,0.000000)]
+hull_pentagon_agree	n=5 [(-1.000000,2.000000),(0.000000,0.000000),(1.000000,3.000000),(2.000000,0.000000),(3.000000,2.000000)]
+hull_duplicate_agree	n=3 [(0.000000,0.000000),(2.000000,3.000000),(4.000000,0.000000)]
+dec_bayazit_lshape	nonempty=true convex=true area=3.000000
+dec_bayazit_plus	nonempty=true convex=true area=5.000000
+dec_bayazit_arrow	nonempty=true convex=true area=6.000000
+dec_earclip_lshape	nonempty=true convex=true area=3.000000
+dec_earclip_plus	nonempty=true convex=true area=5.000000
+dec_earclip_arrow	nonempty=true convex=true area=6.000000
+dec_sweepline_lshape	nonempty=true convex=true area=3.000000
+dec_sweepline_plus	nonempty=true convex=true area=5.000000
+dec_sweepline_arrow	nonempty=true convex=true area=6.000000
+dec_earclip_ushape	nonempty=true convex=true area=7.000000
+dec_sweepline_ushape	nonempty=true convex=true area=7.000000
+dec_earclip_tshape	nonempty=true convex=true area=5.000000
+dec_sweepline_tshape	nonempty=true convex=true area=5.000000
+dec_earclip_comb	nonempty=true convex=true area=11.000000
+dec_sweepline_comb	nonempty=true convex=true area=11.000000
+dec_bayazit_square_convex	n=1 convex=true area=1.000000
+dec_earclip_pentagon_convex	n=1 convex=true area=8.000000
+dec_sweepline_pentagon_convex	n=1 convex=true area=8.000000
+dec_tri_earclip_lshape	n=4 area=3.000000
+dec_tri_earclip_plus	n=10 area=5.000000
+dec_tri_earclip_pentagon	n=3 area=8.000000
+dec_tri_sweepline_lshape	n=4 area=3.000000
+dec_tri_sweepline_plus	n=10 area=5.000000
+simp_vcr_zero_identity	n=7[(0.000000,0.000000) (0.000000,1.000000) (0.250000,0.000000) (0.500000,0.000000) (0.750000,0.000000) (1.000000,0.000000) (1.000000,1.000000)]
+simp_vcr_merge_close_pair	n=4 outside_cluster=n=3[(0.000000,0.000000) (0.000000,1.000000) (1.000000,1.000000)] in_cluster=1 varargs_matches=true
+simp_vcr_below_tolerance_identity	n=5
+simp_vcr_collapse_run	n=4
+simp_dp_drop_collinear	n=4[(0.000000,0.000000) (0.000000,1.000000) (1.000000,0.000000) (1.000000,1.000000)] varargs_matches=true
+simp_dp_drop_small_bulge	n=4[(0.000000,0.000000) (0.000000,1.000000) (1.000000,0.000000) (1.000000,1.000000)]
+simp_dp_keep_significant_bulge	n=7
+simp_dp_square_identity	n=4[(0.000000,0.000000) (0.000000,1.000000) (1.000000,0.000000) (1.000000,1.000000)]
+simp_vis_drop_collinear	n=4[(0.000000,0.000000) (0.000000,1.000000) (1.000000,0.000000) (1.000000,1.000000)]
+simp_vis_drop_small_area	n=4[(0.000000,0.000000) (0.000000,1.000000) (1.000000,0.000000) (1.000000,1.000000)]
+simp_vis_keep_larger_area	n=5
+simp_vis_square_identity	n=4[(0.000000,0.000000) (0.000000,1.000000) (1.000000,0.000000) (1.000000,1.000000)]
+simp_hexagon_all_identity	vcr=6 dp=6 vis=6
+bp_tree_separated_zero	n=0 []
+bp_tree_overlap_one	n=1 [0-1]
+bp_tree_layout_pairs	n=3 [0-1, 0-3, 1-3] size=4
+bp_tree_detect_ab	o01=true o02=false
+bp_tree_query_region	[0, 1, 3]
+bp_tree_query_empty	[]
+bp_tree_after_remove	n=1 [0-1]
+bp_tree_raycast	[0, 1, 3]
+bp_tree_getaabb	minx=0.000000 miny=0.000000 maxx=2.000000 maxy=2.000000
+bp_sap_separated_zero	n=0 []
+bp_brute_separated_zero	n=0 []
+bp_agree_pairs	same=true set=[0-1, 0-3, 1-3]
+bp_agree_query	same=true set=[0, 1, 3]
+lsn_step_counts	begin=5 post=5 end=5
+lsn_step_batched	begin=7 end=7
+lsn_step_remove	afterFirst=3 removed=true final=3
+lsn_step_registered	2
+lsn_collision_fires	broad=true narrow=true manifold=true
+lsn_collision_none	broad=0 narrow=0 manifold=0
+lsn_contact_fires	begin=true collision=true
+lsn_bounds_outside	outside=true
+lsn_bounds_inside	outside=0
+lsn_registered_counts	col=1 con=1 bnd=1
+wq_detect_aabb_hits_A	n=1 {A}
+wq_detect_aabb_hits_A_B	n=2 {A,B}
+wq_detect_aabb_hits_all	n=3 {A,B,C}
+wq_detect_aabb_empty	n=0 {}
+wq_detect_aabb_hits_C	n=1 {C}
+wq_detect_aabb_single_body	n=1 {A}
+wq_convex_detect_at_origin	n=1 {A}
+wq_convex_detect_penetration	n=1 {B} depth=1.100000
+wq_raycast_axis_hits_A_B	n=2 {A,B}
+wq_raycast_short_length	n=1 {A}
+wq_raycast_miss	n=0 {}
+wq_raycast_sorted_closest	body=A dist=2.500000 point=(-0.500000,0.000000)
+wq_raycast_closest_A	body=A dist=2.500000 point=(-0.500000,0.000000) fixture=true n=(-1.000000,0.000000)
+wq_raycast_closest_miss	null
+wq_convex_cast_closest_A	body=A t=0.375000
+wq_convex_cast_list_A_B	n=2 {A,B}
+wq_convex_cast_miss	null
+exc_value_out_of_range	ValueOutOfRangeException|ValueOutOfRangeException|ValueOutOfRangeException|ValueOutOfRangeException|ValueOutOfRangeException|ValueOutOfRangeException|ValueOutOfRangeException|ValueOutOfRangeException
+exc_argument_null	ArgumentNullException|ArgumentNullException|ArgumentNullException|ArgumentNullException
+exc_null_element	NullElementException
+exc_empty_collection	EmptyCollectionException
+exc_illegal_argument	IllegalArgumentException|IllegalArgumentException
+exc_same_object	SameObjectException|SameObjectException|SameObjectException|SameObjectException|SameObjectException
+exc_invalid_index	InvalidIndexException
+exc_object_already_exists	ObjectAlreadyExistsException
+exc_object_already_owned	ObjectAlreadyOwnedException
+exc_argument_null_joints	ArgumentNullException|ArgumentNullException|ArgumentNullException
+exc_value_out_of_range_shapes	ValueOutOfRangeException|ValueOutOfRangeException|ValueOutOfRangeException|ValueOutOfRangeException

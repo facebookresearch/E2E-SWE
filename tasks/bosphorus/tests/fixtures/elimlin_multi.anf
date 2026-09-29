@@ -1,0 +1,11 @@
+c ElimLin depth fixture — 4-var, 3-poly system.
+c Every equation shares the quadratic monomial x1*x2 but pairs off to different linear tails.
+c XOR-ing rows in pairs (which is exactly Gauss-Jordan over GF(2) after treating x1*x2 as
+c a single column) yields the linear equations
+c   row1 XOR row2 = x2 + x3       -> equivalence x(3) + x(2)
+c   row1 XOR row3 = x1 + x4       -> equivalence x(4) + x(1)
+c Trivial linear substitution alone cannot recover either because the input has no linear
+c polynomials to substitute FROM. --el 1 is required.
+x1*x2 + x1 + x2
+x1*x2 + x1 + x3
+x1*x2 + x2 + x4

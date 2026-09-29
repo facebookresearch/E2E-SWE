@@ -1,0 +1,40 @@
+# kcwarden config enabling the monitor checks for the `audit -c` tests.
+# Top-level `monitors` is a list of {monitor: <ClassName>, config: [<entry>, ...]}.
+auditors: []
+monitors:
+  - monitor: ServiceAccountWithSensitiveRole
+    config:
+      - role: sensitive-role
+        role-client: realm
+        allowed: []
+        severity: HIGH
+  - monitor: ClientWithSensitiveRole
+    config:
+      - role: sensitive-role
+        role-client: realm
+        ignore_full_scope_allowed: true
+        allowed: []
+  - monitor: ClientWithSensitiveScope
+    config:
+      - scope: scope-with-sensitive-role
+        allowed: []
+  - monitor: GroupWithSensitiveRole
+    config:
+      - role: sensitive-role
+        role-client: realm
+        allowed: []
+  - monitor: RoleWithSensitiveAssociatedRole
+    config:
+      - role: sensitive-role
+        role-client: realm
+        allowed: []
+  - monitor: ServiceAccountWithGroup
+    config:
+      - group: /sensitive-group
+        allow_no_group: true
+        allowed: []
+  - monitor: ProtocolMapperWithConfigOnClientScope
+    config:
+      - protocol-mapper-type: oidc-usermodel-realm-role-mapper
+        matched-config: {}
+        allowed: []
