@@ -1,0 +1,62 @@
+P_x12_events	II S:ISA e:00 e:           e:00 e:           e:ZZ e:ReceiverID      e:ZZ e:Sender          e:050812 e:1953 e:^ e:00501 e:508121953 e:0 e:P e:: /S S:GS e:FA e:ReceiverDept e:SenderDept e:20050812 e:195335 e:000005 e:X e:005010X230 /S S:ST e:997 e:0001 /S S:AK1 e:FA e:000000001 /S S:SE e:3 e:0001 /S S:GE e:1 e:000005 /S S:IEA e:1 e:508121953 /S /II
+P_x12_delimiters	{io.ediflow.stream.delim.componentElement=:, io.ediflow.stream.delim.dataElement=*, io.ediflow.stream.delim.decimal=., io.ediflow.stream.delim.repetition=^, io.ediflow.stream.delim.segment=~}
+P_x12_standard_ver	X12|[00501]
+P_x12_composite	II S:ISA e:00 e:           e:00 e:           e:ZZ e:ReceiverID      e:ZZ e:Sender          e:050812 e:1953 e:^ e:00501 e:508121953 e:0 e:P e:: /S S:GS e:FA e:R e:S e:20050812 e:195335 e:1 e:X e:005010 /S S:ST e:997 e:0001 /S S:AK9 e:A C e:1 e:2 e:3 /C e:X /S S:SE e:2 e:0001 /S S:GE e:1 e:1 /S S:IEA e:1 e:508121953 /S /II
+P_edifact_events	II S:UNA e:.  /S S:UNB C e:UNOA e:1 /C e:SENDER e:RECEIVER C e:240101 e:1200 /C e:1 /S S:UNH e:00000000000117 C e:INVOIC e:D e:97B e:UN /C /S S:UNT e:2 e:00000000000117 /S S:UNZ e:1 e:1 /S /II
+P_edifact_delimiters	{io.ediflow.stream.delim.componentElement=:, io.ediflow.stream.delim.dataElement=+, io.ediflow.stream.delim.decimal=., io.ediflow.stream.delim.release=?, io.ediflow.stream.delim.segment='}||{io.ediflow.stream.delim.componentElement=:, io.ediflow.stream.delim.dataElement=+, io.ediflow.stream.delim.decimal=., io.ediflow.stream.delim.release=?, io.ediflow.stream.delim.segment='}
+P_edifact_standard_ver	EDIFACT|[UNOA, 1]
+P_edifact_nouna_events	II S:UNB C e:UNOA e:1 /C e:SENDER e:RECEIVER C e:240101 e:1200 /C e:1 /S S:UNH e:1 C e:ORDERS e:D e:96A e:UN /C /S S:UNT e:2 e:1 /S S:UNZ e:1 e:1 /S /II
+P_edifact_release_char	II S:UNA e:.  /S S:UNB C e:UNOA e:1 /C e:A e:B C e:240101 e:1200 /C e:1 /S S:UNH e:1 C e:X e:D e:96A e:UN /C /S S:FTX e:AAA e: e: e:PRICE IS 5:1 RATIO /S S:UNT e:3 e:1 /S S:UNZ e:1 e:1 /S /II
+P_delims_before_interchange	ISE
+V_valid	OK|OK|OK
+V_missing_s12	MANDATORY_SEGMENT_MISSING:S12
+V_missing_s19	MANDATORY_SEGMENT_MISSING:S19
+V_missing_s11_s12	UNEXPECTED_SEGMENT:S19
+V_exceeds_max_s13	SEGMENT_EXCEEDS_MAXIMUM_USE:S13
+V_unexpected_segment	SEGMENT_NOT_IN_DEFINED_TRANSACTION_SET:S0Z
+V_out_of_sequence	UNEXPECTED_SEGMENT:S12,MANDATORY_SEGMENT_MISSING:S12
+V_loop_over_max	LOOP_OCCURS_OVER_MAXIMUM_TIMES:S20
+V_required_element_missing	REQUIRED_DATA_ELEMENT_MISSING:
+V_too_many_elements	TOO_MANY_DATA_ELEMENTS:B,TOO_MANY_DATA_ELEMENTS:C
+S_valid_row	OK
+S_num_nonnumeric	INVALID_CHARACTER_DATA:1A
+S_num_too_long	DATA_ELEMENT_TOO_LONG:1234
+S_date_invalid	INVALID_DATE:20241315
+S_time_nonnumeric	INVALID_TIME:12AB
+S_code_invalid	INVALID_CODE_VALUE:ZZ
+S_str_too_short	DATA_ELEMENT_TOO_SHORT:a
+S_str_too_long	DATA_ELEMENT_TOO_LONG:abcde
+S_multi_errors	INVALID_CHARACTER_DATA:1A,INVALID_DATE:20241315,INVALID_TIME:2599,INVALID_CODE_VALUE:ZZ,DATA_ELEMENT_TOO_SHORT:a
+S_date_feb29_nonleap	INVALID_DATE:20230229
+S_date_day00	INVALID_DATE:20240100
+S_time_hour24	INVALID_TIME:2400
+S_decimal_bad	INVALID_CHARACTER_DATA:12A
+S_date_month00	INVALID_DATE:20240015
+S_time_minute60	INVALID_TIME:2360
+S_num_has_dot	INVALID_CHARACTER_DATA:1.5
+SL_load_ok	SEGMENT|ELEMENT
+SL_malformed	THROWS:EDISchemaException
+SL_bad_namespace	THROWS:EDISchemaException
+W_x12_full_interchange	ISA*00*          *00*          *ZZ*ReceiverID     *ZZ*Sender         *050812*1953*^*00501*508121953*0*P*:~GS*FA*ReceiverDept*SenderDept*20050812*195335*000005*X*005010X230~ST*997*0001~SE*2*0001~GE*1*000005~IEA*1*508121953~
+W_x12_composite	ISA*00*          *00*          *ZZ*ReceiverID     *ZZ*Sender         *050812*1953*^*00501*508121953*0*P*:~AK9*A*1:2:3*X~IEA*1*508121953~
+W_x12_empty_element	ISA*00*          *00*          *ZZ*ReceiverID     *ZZ*Sender         *050812*1953*^*00501*508121953*0*P*:~TST*A**C~IEA*1*508121953~
+W_x12_empty_component	ISA*00*          *00*          *ZZ*ReceiverID     *ZZ*Sender         *050812*1953*^*00501*508121953*0*P*:~TST*1::3~IEA*1*508121953~
+W_x12_repeat_element	ISA*00*          *00*          *ZZ*ReceiverID     *ZZ*Sender         *050812*1953*^*00501*508121953*0*P*:~RPT*A^B^C~IEA*1*508121953~
+W_edifact_full_interchange	UNB+UNOA:4+SENDER+RECEIVER+240101:1200+1'UNH+1+ORDERS:D:96A:UN'UNT+2+1'UNZ+1+1'
+W_edifact_composite	UNB+UNOA:4+SENDER+RECEIVER+240101:1200+1'FTX+AAA+1:2+free text'UNZ+1+1'
+C_valid	OK
+C_ref_mismatch_iea	CONTROL_REFERENCE_MISMATCH:999999999
+C_count_mismatch_iea	CONTROL_COUNT_DOES_NOT_MATCH_ACTUAL_COUNT:2
+C_count_mismatch_se	CONTROL_COUNT_DOES_NOT_MATCH_ACTUAL_COUNT:9
+C_ref_mismatch_ge	CONTROL_REFERENCE_MISMATCH:999999
+C_ref_mismatch_se	CONTROL_REFERENCE_MISMATCH:9999
+Y_paired_violation	CONDITIONAL_REQUIRED_DATA_ELEMENT_MISSING,CONDITIONAL_REQUIRED_DATA_ELEMENT_MISSING
+Y_paired_ok	OK
+Y_required_violation	CONDITIONAL_REQUIRED_DATA_ELEMENT_MISSING,CONDITIONAL_REQUIRED_DATA_ELEMENT_MISSING,CONDITIONAL_REQUIRED_DATA_ELEMENT_MISSING
+Y_exclusion_violation	EXCLUSION_CONDITION_VIOLATED
+Y_exclusion_ok	OK
+Y_conditional_violation	CONDITIONAL_REQUIRED_DATA_ELEMENT_MISSING,CONDITIONAL_REQUIRED_DATA_ELEMENT_MISSING
+Y_conditional_ok_no_anchor	OK
+Y_single_violation	EXCLUSION_CONDITION_VIOLATED
+Y_list_violation	CONDITIONAL_REQUIRED_DATA_ELEMENT_MISSING,CONDITIONAL_REQUIRED_DATA_ELEMENT_MISSING
+Y_firstonly_violation	EXCLUSION_CONDITION_VIOLATED

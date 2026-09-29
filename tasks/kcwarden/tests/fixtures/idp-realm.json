@@ -1,0 +1,75 @@
+{
+  "realm": "idp-realm",
+  "registrationAllowed": false,
+  "verifyEmail": true,
+  "bruteForceProtected": true,
+  "revokeRefreshToken": false,
+  "refreshTokenMaxReuse": 0,
+  "accessTokenLifespan": 300,
+  "offlineSessionMaxLifespanEnabled": true,
+  "keycloakVersion": "999.0.0",
+  "passwordPolicy": "length(12)",
+  "attributes": {},
+  "components": {},
+  "clients": [],
+  "roles": {
+    "realm": [],
+    "client": {}
+  },
+  "identityProviders": [
+    {
+      "alias": "idp-oidc-nopkce",
+      "providerId": "oidc",
+      "enabled": true,
+      "config": {
+        "validateSignature": "true",
+        "pkceEnabled": "false",
+        "syncMode": "FORCE"
+      }
+    },
+    {
+      "alias": "idp-oidc-nosig",
+      "providerId": "oidc",
+      "enabled": true,
+      "config": {
+        "validateSignature": "false",
+        "pkceEnabled": "true",
+        "pkceMethod": "S256",
+        "syncMode": "FORCE"
+      }
+    },
+    {
+      "alias": "idp-saml-insecure",
+      "providerId": "saml",
+      "enabled": true,
+      "config": {
+        "validateSignature": "false",
+        "wantAssertionsEncrypted": "false",
+        "postBindingResponse": "false",
+        "wantAssertionsSigned": "false",
+        "wantAuthnRequestsSigned": "false",
+        "syncMode": "FORCE"
+      }
+    },
+    {
+      "alias": "idp-sync",
+      "providerId": "oidc",
+      "enabled": true,
+      "config": {
+        "validateSignature": "true",
+        "pkceEnabled": "true",
+        "pkceMethod": "S256",
+        "syncMode": "LEGACY"
+      }
+    }
+  ],
+  "identityProviderMappers": [
+    {
+      "name": "sync-mapper",
+      "identityProviderAlias": "idp-sync",
+      "identityProviderMapper": "oidc-user-attribute-idp-mapper",
+      "config": {}
+    }
+  ],
+  "clientScopes": []
+}

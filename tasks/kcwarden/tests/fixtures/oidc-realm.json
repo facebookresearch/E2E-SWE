@@ -1,0 +1,236 @@
+{
+  "realm": "oidc-realm",
+  "registrationAllowed": false,
+  "verifyEmail": true,
+  "bruteForceProtected": true,
+  "revokeRefreshToken": false,
+  "refreshTokenMaxReuse": 0,
+  "accessTokenLifespan": 300,
+  "offlineSessionMaxLifespanEnabled": true,
+  "keycloakVersion": "999.0.0",
+  "passwordPolicy": "length(12)",
+  "attributes": {},
+  "components": {},
+  "clients": [
+    {
+      "clientId": "oidc-clean",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": [
+        "https://app.example.com/cb"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-jwt"
+    },
+    {
+      "clientId": "global-wildcard",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": [
+        "*"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-jwt"
+    },
+    {
+      "clientId": "custom-scheme",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": [
+        "myapp://callback"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-jwt"
+    },
+    {
+      "clientId": "http-nonlocal",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": [
+        "http://app.example.com/cb"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-jwt"
+    },
+    {
+      "clientId": "no-redirects",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": [],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-jwt"
+    },
+    {
+      "clientId": "long-token",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "access.token.lifespan": "3600"
+      },
+      "redirectUris": [
+        "https://app.example.com/cb"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-jwt"
+    },
+    {
+      "clientId": "implicit",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": [
+        "https://app.example.com/cb"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-jwt"
+    },
+    {
+      "clientId": "weborigin-wildcard",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": [
+        "https://app.example.com/cb"
+      ],
+      "webOrigins": [
+        "*"
+      ],
+      "clientAuthenticatorType": "client-jwt"
+    },
+    {
+      "clientId": "confidential-dag",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": [
+        "https://app.example.com/cb"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-jwt"
+    },
+    {
+      "clientId": "default-offline",
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [
+        "offline_access"
+      ],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "redirectUris": [
+        "https://app.example.com/cb"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-jwt"
+    }
+  ],
+  "roles": {
+    "realm": [],
+    "client": {}
+  },
+  "identityProviders": [],
+  "identityProviderMappers": [],
+  "clientScopes": []
+}

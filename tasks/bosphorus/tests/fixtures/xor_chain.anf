@@ -1,0 +1,5 @@
+c 5-literal XOR: exercises the --cutnum cutting-point aux-var machinery in ANF -> CNF.
+c With --cutnum 5 the entire XOR fits in one chunk (5 vars, 2^(5-1)=16 clauses).
+c With --cutnum 3 the XOR is split into two chunks joined by 1 auxiliary variable
+c (6 vars, fewer total clauses because each smaller chunk has 2^(3-1)=4 combinations).
+x0 + x1 + x2 + x3 + x4

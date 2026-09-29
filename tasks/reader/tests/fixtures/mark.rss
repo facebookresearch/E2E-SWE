@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Mark As Read RSS</title>
+    <description>Entries to test mark_as_read plugin.</description>
+    <link>http://mark.example.com/</link>
+
+    <item>
+        <title>SPAM: Click here now</title>
+        <description>Spammy content.</description>
+        <link>http://mark.example.com/spam1</link>
+        <guid isPermaLink="false">mark-1</guid>
+    </item>
+    <item>
+        <title>Legit content about Python</title>
+        <description>An informative post.</description>
+        <link>http://mark.example.com/legit</link>
+        <guid isPermaLink="false">mark-2</guid>
+    </item>
+    <item>
+        <title>SPAM: Buy more stuff</title>
+        <description>More spam.</description>
+        <link>http://mark.example.com/spam2</link>
+        <guid isPermaLink="false">mark-3</guid>
+    </item>
+</channel>
+</rss>

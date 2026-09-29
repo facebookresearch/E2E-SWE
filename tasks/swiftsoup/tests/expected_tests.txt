@@ -1,0 +1,47 @@
+# Canonical list of hidden test method names (the grading denominator).
+# Any expected test with no XML result (compile error / crash / timeout) is scored failed.
+# --- ParsingTests ---
+testParsesDocumentStructureAndAccess
+testNormalisesMalformedDocuments
+testHandlesTableStructure
+testHandlesSelfClosingAndVoidTags
+testHandlesCommentsScriptAndStyleData
+testReconstructsMisnestedFormatting
+testParsesBodyFragmentUnknownTagsAndIsRobust
+# --- SelectorTests ---
+testByTagIdClass
+testByAttribute
+testCombinators
+testGroupAndUniversal
+testStructuralChildPseudo
+testStructuralTypePseudo
+testIndexedPseudo
+testHasNotContainsMatches
+# --- TraversalManipulationTests ---
+testTextAndOwnText
+testNavigation
+testFindElementByIdTagClassAttr
+testClassManipulation
+testAttributeManipulation
+testAppendPrependAndSetHtml
+testWrapUnwrapEmptyRemove
+testBeforeAfterAndInsertChildren
+# --- OutputTests ---
+testPrettyPrintFormatting
+testOutputToggles
+testEncodingAndEscapeModes
+testHtmlVsXmlSyntax
+testVoidDataAndContainerOutput
+# --- SanitizeTests ---
+testSimpleTextAndBasic
+testBasicWithImagesAndRelaxed
+testDropsUnsafeContent
+testCustomWhitelistBuilders
+testIsValidAndRelativeLinks
+testCSSPropertyFiltering
+# --- EntitiesTests ---
+testEscapeModes
+testUnescape
+testNbspAndSupplementary
+testStrictUnescapeAndRoundTrip
+testEscapeModeNameCodepointAndGetByName

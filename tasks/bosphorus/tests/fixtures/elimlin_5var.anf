@@ -1,0 +1,11 @@
+c ElimLin depth fixture — 6-var, 4-poly system with cascading substitution.
+c Two pairs of degree-2 polynomials with shared bilinear monomials (x0*x1 and x2*x3):
+c   pair 1 -> ElimLin pivots on x0*x1, learns x2+x3=0 -> equivalence x(3)+x(2)
+c   pair 2 -> similarly pivots on x2*x3 (post-substitution collapses to x4+x2=0 and
+c             x5+x2=0 because x*x=x in GF(2) makes x2*x3 -> x2*x2 -> x2 after
+c             replacing x3 with x2), yielding equivalences x(4)+x(2) and x(5)+x(2).
+c Result: three equivalences all rooted at x(2). Requires --el 1; --el 0 recovers none.
+x0*x1 + x2
+x0*x1 + x3
+x2*x3 + x4
+x2*x3 + x5

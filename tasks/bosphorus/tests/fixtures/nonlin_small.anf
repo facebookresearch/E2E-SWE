@@ -1,0 +1,12 @@
+c Small non-linear polynomial suitable for Brickenstein encoding.
+c   x0*x1*x2 + x0 + 1 = 0
+c
+c Support size 3 fits well within the default --karn cutoff of 8, so Brickenstein produces
+c a compact CNF that matches exactly the satisfying assignments over {x0,x1,x2}:
+c   x0=1 AND (x1=0 OR x2=0)  ->  2 clauses over 3 vars.
+c
+c With --karn 0 the Brickenstein path is disabled and the polynomial falls back to the
+c generic monomial-encoding: a fresh CNF variable is introduced for the monomial x0*x1*x2,
+c linked to its factors by CNF clauses, and the XOR is emitted separately. Result: >3 CNF
+c variables and >2 CNF clauses.
+x0*x1*x2 + x0 + 1

@@ -1,0 +1,148 @@
+{
+  "realm": "saml-realm",
+  "registrationAllowed": false,
+  "verifyEmail": true,
+  "bruteForceProtected": true,
+  "revokeRefreshToken": false,
+  "refreshTokenMaxReuse": 0,
+  "accessTokenLifespan": 300,
+  "offlineSessionMaxLifespanEnabled": true,
+  "keycloakVersion": "999.0.0",
+  "passwordPolicy": "length(12)",
+  "attributes": {},
+  "components": {},
+  "clients": [
+    {
+      "clientId": "saml-clean",
+      "protocol": "saml",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "saml.assertion.signature": "true",
+        "saml.client.signature": "true",
+        "saml.encrypt": "true",
+        "saml.onetimeuse.condition": "true",
+        "saml.signature.algorithm": "RSA_SHA256"
+      },
+      "redirectUris": [
+        "https://clean.example.com/acs"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-secret"
+    },
+    {
+      "clientId": "saml-no-sigs",
+      "protocol": "saml",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "saml.assertion.signature": "false",
+        "saml.client.signature": "false",
+        "saml.encrypt": "false",
+        "saml.onetimeuse.condition": "false",
+        "saml.signature.algorithm": ""
+      },
+      "redirectUris": [
+        "https://nosig.example.com/acs"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-secret"
+    },
+    {
+      "clientId": "saml-weak-algo",
+      "protocol": "saml",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "saml.assertion.signature": "true",
+        "saml.client.signature": "true",
+        "saml.encrypt": "true",
+        "saml.onetimeuse.condition": "true",
+        "saml.signature.algorithm": "RSA_SHA1"
+      },
+      "redirectUris": [
+        "https://weak.example.com/acs"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-secret"
+    },
+    {
+      "clientId": "saml-wildcard-path",
+      "protocol": "saml",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "saml.assertion.signature": "true",
+        "saml.client.signature": "true",
+        "saml.encrypt": "true",
+        "saml.onetimeuse.condition": "true",
+        "saml.signature.algorithm": "RSA_SHA256"
+      },
+      "redirectUris": [
+        "https://wild.example.com/*"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-secret"
+    },
+    {
+      "clientId": "saml-wildcard-domain",
+      "protocol": "saml",
+      "publicClient": false,
+      "enabled": true,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "fullScopeAllowed": false,
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "attributes": {
+        "saml.assertion.signature": "true",
+        "saml.client.signature": "true",
+        "saml.encrypt": "true",
+        "saml.onetimeuse.condition": "true",
+        "saml.signature.algorithm": "RSA_SHA256"
+      },
+      "redirectUris": [
+        "https://broken.example.com*"
+      ],
+      "webOrigins": [],
+      "clientAuthenticatorType": "client-secret"
+    }
+  ],
+  "roles": {
+    "realm": [],
+    "client": {}
+  },
+  "identityProviders": [],
+  "identityProviderMappers": [],
+  "clientScopes": []
+}

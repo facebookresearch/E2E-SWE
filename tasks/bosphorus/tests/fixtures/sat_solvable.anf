@@ -1,0 +1,5 @@
+c Underconstrained system whose only satisfying assignments over {x0,x1,x2} require x0=1.
+c    x0 + 1 = 0        -> x0 = 1
+c    x1 + x2 = 0       -> x1 = x2 (equivalence, two SAT branches: 00 or 11)
+x0 + 1
+x1 + x2
