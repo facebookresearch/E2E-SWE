@@ -1936,14 +1936,16 @@ class TestJWSCritHeader:
         from authlib.jose import JsonWebSignature, OctKey
         from authlib.jose.errors import InvalidCritHeaderParameterNameError
 
-        jws = JsonWebSignature(["HS256"])
+        # RFC 7515 Section 4.1.11: "crit" lists extension Header Parameters; producers MUST NOT
+        # list names defined by RFC 7515/7518 (such as "kid"). Use a declared private extension.
+        jws = JsonWebSignature(["HS256"], private_headers={"ext"})
         key = OctKey.generate_key(256)
 
         token_with_crit = jws.serialize_compact(
-            {"alg": "HS256", "kid": "mykey", "crit": ["kid"]}, b"crit-payload", key)
+            {"alg": "HS256", "ext": "value", "crit": ["ext"]}, b"crit-payload", key)
         result = jws.deserialize_compact(token_with_crit, key)
         assert result["payload"] == b"crit-payload"
-        assert result.header["crit"] == ["kid"]
+        assert result.header["crit"] == ["ext"]
 
         with pytest.raises(InvalidCritHeaderParameterNameError):
             jws.serialize_compact(
