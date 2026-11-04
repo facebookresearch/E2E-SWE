@@ -76,6 +76,7 @@ class HarborEnvironment:
     ) -> dict[str, Any]:
         command = action.get("command", "")
         target_cwd = cwd or self.config.cwd
+        future = None
         try:
             future = asyncio.run_coroutine_threadsafe(
                 self.environment.exec(
@@ -96,6 +97,8 @@ class HarborEnvironment:
                 "exception_info": "",
             }
         except Exception as e:  # noqa: BLE001 - surfaced to the model as an observation
+            if future is not None and not future.done():
+                future.cancel()
             observation = {
                 "output": "",
                 "returncode": -1,
