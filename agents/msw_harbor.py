@@ -33,6 +33,7 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import shlex
 from pathlib import Path
 from typing import Any, override
 
@@ -611,7 +612,9 @@ class MiniSweHostAgent(BaseAgent):
         target = f"{self._cwd}/instruction.md"
         tmp = None
         try:
-            await environment.exec(command=f"mkdir -p {self._cwd}", user="root")
+            await environment.exec(
+                command=f"mkdir -p -- {shlex.quote(self._cwd)}", user="root"
+            )
             with tempfile.NamedTemporaryFile(
                 "w", suffix=".md", delete=False, encoding="utf-8"
             ) as f:
