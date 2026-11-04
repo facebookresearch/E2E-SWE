@@ -458,8 +458,8 @@ class MiniSweHostAgent(BaseAgent):
         *args,
         config_path: str | None = None,
         model_class: str | None = None,
-        step_limit: int = 500,
-        cost_limit: float = 0.0,
+        step_limit: int | None = None,
+        cost_limit: float | None = None,
         command_timeout: int = 300,
         cwd: str = "/app",
         **kwargs,
@@ -533,8 +533,16 @@ class MiniSweHostAgent(BaseAgent):
         turn_log_path = self.logs_dir / "mini-swe-agent.turns.jsonl"
 
         agent_kwargs, model_config = self._load_config()
-        agent_kwargs.setdefault("step_limit", self._step_limit)
-        agent_kwargs.setdefault("cost_limit", self._cost_limit)
+        # Explicit Harbor agent arguments override YAML; omitted arguments retain
+        # the YAML setting, or the adapter's historical defaults when absent.
+        if self._step_limit is None:
+            agent_kwargs.setdefault("step_limit", 500)
+        else:
+            agent_kwargs["step_limit"] = self._step_limit
+        if self._cost_limit is None:
+            agent_kwargs.setdefault("cost_limit", 0.0)
+        else:
+            agent_kwargs["cost_limit"] = self._cost_limit
         # DefaultAgent.run() saves to this path after every step, in a finally — so the
         # trajectory is current even if the run crashes or is killed mid-task.
         agent_kwargs["output_path"] = trajectory_path

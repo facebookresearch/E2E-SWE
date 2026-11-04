@@ -60,6 +60,13 @@ PYTHONPATH=/path/to/E2E-SWE \
     --jobs-dir jobs --job-name <name> -n 25 -q -y
 ```
 
+To override the YAML agent budgets, add `--ak step_limit=100` or
+`--ak cost_limit=5.0`. Explicit arguments take precedence over `agent.step_limit`
+and `agent.cost_limit` in the config file; omitted arguments preserve those values.
+If neither source sets them, the adapter defaults to 500 steps and no cost limit.
+A value of zero disables the corresponding limit. The cost limit uses the agent's
+reported model cost; it is not a provider-side spending cap.
+
 ## Reading results
 
 Per trial, under `jobs/<job>/<task>__<id>/`:
